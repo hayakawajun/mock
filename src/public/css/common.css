@@ -1,0 +1,119 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ヘッダー */
+.header {
+    background-color: black;
+}
+
+.header__content {
+    max-width: 1540px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 15px 50px;
+}
+
+.search__form {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 50px;
+}
+
+.search__form--input {
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.search__form--btn {
+    padding: 9px 18px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-left: 10px;
+}
+
+.header__nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.header__nav-link:last-of-type {
+    padding: 5px 20px;
+    color: #000000;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+
+/* コンテンツ */
+.content {
+    text-align: center;
+}
+
+.form__heading {
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+/* 共通フォーム領域と 共通フォームアイテム */
+.form-field {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.form__group {
+    text-align: left;
+}
+
+.input-label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-window {
+    width: 100%;
+    padding: 10px 15px;
+    border: solid 1px #cccccc;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: red;
+    color: #ffffff;
+    padding: 8px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+/* ページリンク */
+.page-change {
+    color: rgb(0, 170, 255);
+    display: block;
+    text-decoration: none;
+    margin-top: 20px;
+}

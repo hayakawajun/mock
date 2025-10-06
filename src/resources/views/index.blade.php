@@ -7,5 +7,10 @@
 </head>
 <body>
     （仮）
+    <form action="/logout" method="post">
+        @csrf
+    <button type="submit">ログアウト</button>
+    </form>
+    
 </body>
 </html>

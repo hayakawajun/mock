@@ -21,10 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'postal_code',
-        'address',
-        'building',
-        'image'
     ];
 
     /**
@@ -45,4 +41,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
 }

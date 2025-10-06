@@ -10,15 +10,33 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use App\Http\Responses\CustomRegisterResponse;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * ログアウト後の遷移先をログイン画面に指定。
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+            public function toResponse($request)
+            {
+                return redirect('/login');
+            }
+        });
+
+    /**
+     * 新規登録後の遷移先をプロフィール編集画面に指定。作成したCustomRegisterResponse.phpをバインド。
+     */
+
+        $this->app->singleton(
+        RegisterResponseContract::class,
+        CustomRegisterResponse::class
+        );
     }
 
     /**

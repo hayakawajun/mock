@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-<form class="profile-form form-field" action="" enctype="multipart/form-data">
+<form class="profile-form form-field" action="/profile_update" enctype="multipart/form-data" method="post">
     @csrf
     <h1 class="content__heading">プロフィール設定</h1>
     <div class="profile__image--upload">
@@ -43,7 +43,7 @@
     </div>
     <div class="form__group">
         <label class="input-label" for="postal_code">郵便番号</label>
-        <input class="input-window" type="text" name="postal_code" id="postal_code" value="{{ Auth::user()->postal_code }}">
+        <input class="input-window" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code',$profile->postal_code ?? '') }}">
         <p class="error-message">
             @error('postal_code')
             {{ $message }}
@@ -52,7 +52,7 @@
     </div>
     <div class="form__group">
         <label class="input-label" for="address">住所</label>
-        <input class="input-window" type="text" name="address" id="address" value="{{ Auth::user()->address }}">
+        <input class="input-window" type="text" name="address" id="address" value="{{ old('address',$profile->address ?? '') }}">
         <p class="error-message">
             @error('address')
             {{ $message }}
@@ -61,15 +61,14 @@
     </div>
     <div class="form__group">
         <label class="input-label" for="building">建物名</label>
-        <input class="input-window" type="text" name="building" id="building" value="{{ Auth::user()->building }}">
+        <input class="input-window" type="text" name="building" id="building" value="{{ old('building',$profile->building ?? '') }}">
         <p class="error-message">
             @error('building')
             {{ $message }}
             @enderror
         </p>
     </div>
-
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     <button class="submit-btn">更新する</button>
-
 </form>
 @endsection('content')

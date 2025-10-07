@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-<form class="login-form form-field" action="" >
+<form class="login-form form-field" action="/login" method="post" >
     @csrf
     <h1 class="content__heading">ログイン</h1>
     <div class="form__group">

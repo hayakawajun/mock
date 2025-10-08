@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/login.css')}}">
+<link rel="stylesheet" href="{{ asset('css/profile.css')}}">
 @endsection
 
 @section('link')
@@ -21,17 +21,28 @@
 <form class="profile-form form-field" action="/profile_update" enctype="multipart/form-data" method="post">
     @csrf
     <h1 class="content__heading">プロフィール設定</h1>
-    <div class="profile__image--upload">
-        <div class="user__image">
-            <img class="uploaded__image"src="" alt="">
-        </div>
-        <div class="upload__image-field">
-            <button class="upload__image-btn" type="button">
-                <label for="upload__image">画像を選択する</label>
-            </button>
-            <input type="file" id="upload__image" name="image" style="display: none;">
-        </div>
+    <div class="user-image">
+        @isset($profile->image)
+            <div class="uploaded__user-image">
+                <img src="{{ asset('storage/'.$profile->image) }}" alt="プロフィール画像">
+            </div>
+        @else
+            <div class="uploaded__user-image">
+                <img src="{{ asset('image/default.png') }}" alt="デフォルトのプロフィール画像">
+            </div>
+        @endisset
+            <div class="upload__image-field">
+                <label class="upload__image-btn" for="image"></label>
+                <input class="upload__image-input" type="file" name="image" id="image">
+            </div>
     </div>
+
+        <p class="error-message">
+            @error('image')
+            {{ $message }}
+            @enderror
+        </p>
+
     <div class="form__group">
         <label class="input-label" for="name">ユーザー名</label>
         <input class="input-window" type="text" name="name" id="name" value="{{ Auth::user()->name }}">

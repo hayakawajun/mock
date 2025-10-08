@@ -10,6 +10,7 @@
     <form action="/logout" method="post">
         @csrf
     <button type="submit">ログアウト</button>
+    <a href="/profile">プロフィール設定画面へ</a>
     </form>
     
 </body>

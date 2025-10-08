@@ -12,7 +12,7 @@
 </form>
 <nav class="header__nav">
     <a class="header__nav-link" href="">ログアウト</a>
-    <a class="header__nav-link" href="">マイページ</a>
+    <a class="header__nav-link" href="/">マイページ</a>
     <a class="header__nav-link" href="">出品</a>
 </nav>
 @endsection

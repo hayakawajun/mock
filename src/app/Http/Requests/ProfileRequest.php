@@ -28,7 +28,25 @@ class ProfileRequest extends FormRequest
             'postal_code' => ['required', 'regex:/^\d{3}-\d{4}$/'],
             'address' => ['required','string','max:30'],
             'building' => ['nullable','string','max:30'],
-            'image' => ['nullable']
+            'image' => ['nullable','mimes:jpg,jpeg,png','max:1024']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'ユーザー名は必ず入力してください',
+            'name.string' => 'ユーザー名は文字列で入力してください',
+            'name.max' => 'ユーザー名は20文字以内で入力してください',
+            'postal_code.required' => '郵便番号は必ず入力してください',
+            'postal_code.regex' => '郵便番号はハイフンありの7桁の数字で入力してください',
+            'address.required' => '住所は必ず入力してください',
+            'address.string' => '住所は文字列で入力してください',
+            'address.max' => '住所は30文字以内で入力してください',
+            'building.string' => '建物名は文字列で入力してください',
+            'building.max' => '建物名は30文字以内で入力してください',
+            'image.mimes' => 'png, jpg, jpeg形式の画像ファイルのみアップロードできます',
+            'image.max' => 'アップロードする画像のサイズは1MB未満にしてください'
         ];
     }
 }

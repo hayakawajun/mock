@@ -8,6 +8,6 @@ use App\Http\Controllers\ProfileController;
 Route::get('/',[ItemController::class,'index']);
 
 Route::middleware('auth')->group(function(){
-    Route::get('/profile',[ProfileController::class,'profile']);
+    Route::get('/profile',[ProfileController::class,'show']);
     Route::post('/profile_update',[ProfileController::class,'update']);
 });

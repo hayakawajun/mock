@@ -65,6 +65,40 @@ input::placeholder {
     border-radius: 5px;
 }
 
+/* セッションメッセージ */
+.alert {
+    background-color: rgb(81, 186, 207);
+    animation: fadeOut 1s ease-out 5s forwards;
+}
+
+.alert__danger {
+    background-color: rgb(199, 73, 90);
+    animation: fadeOut 1s ease-out 5s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.alert__content {
+    max-width: 1540px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.alert-massage {
+    display: inline;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
 /* コンテンツ */
 .content {
     text-align: center;
@@ -102,6 +136,7 @@ input::placeholder {
     font-size: 15px;
 }
 
+/* 送信ボタン */
 .submit-btn {
     width: 100%;
     background-color: red;
@@ -114,28 +149,27 @@ input::placeholder {
     margin-top: 40px;
 }
 
+/* 画像アップロードボタン */
+.upload__image-input::file-selector-button {
+    display: block;
+    margin-top: -20px;
+    visibility: hidden;
+}
+
 .upload__image-btn {
+    width: 150px;
+    display: block;
     color: red;
     padding: 8px 10px;
+    margin-top: 30px;
     border: solid 1px red;
     border-radius: 4px;
     background-color: #ffffff;
     cursor: pointer;
 }
 
-/* プロフィール画像 */
-.profile__image--upload {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.user__image {
-    width: 120px;
-    height: 120px;
-    background-color: #5e5e5e;
-    border-radius: 60px;
-    margin-right: 30px;
+.upload__image-btn::after {
+    content: '画像を選択する';
 }
 
 /* エラーメッセージ */

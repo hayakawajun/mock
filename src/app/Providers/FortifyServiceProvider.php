@@ -13,6 +13,8 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 use App\Http\Responses\CustomRegisterResponse;
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+use App\Http\Requests\LoginRequest;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -59,5 +61,10 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
+
+        /**
+         * FortifyLoginRequestが呼び出されたら、カスタムフォームリクエストを呼び出すよう、 LoginRequestをバインド。
+         */
+        $this->app->bind(FortifyLoginRequest::class,LoginRequest::class);
     }
 }

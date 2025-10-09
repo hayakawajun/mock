@@ -24,11 +24,11 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','string','max:20'],
-            'postal_code' => ['required', 'regex:/^\d{3}-\d{4}$/'],
-            'address' => ['required','string','max:30'],
-            'building' => ['nullable','string','max:30'],
-            'image' => ['nullable','mimes:jpg,jpeg,png','max:1024']
+            'name' => 'required | string | max:20',
+            'postal_code' => 'required | string | regex:/^\d{3}-\d{4}$/',
+            'address' => 'required | string | max:30',
+            'building' => 'nullable | string | max:30',
+            'image' => 'nullable | mimes:jpg,jpeg,png | max:1024'
         ];
     }
 
@@ -39,6 +39,7 @@ class ProfileRequest extends FormRequest
             'name.string' => 'ユーザー名は文字列で入力してください',
             'name.max' => 'ユーザー名は20文字以内で入力してください',
             'postal_code.required' => '郵便番号は必ず入力してください',
+            'postal_code.string' => '郵便番号は文字列で入力してください',
             'postal_code.regex' => '郵便番号はハイフンありの7桁の数字で入力してください',
             'address.required' => '住所は必ず入力してください',
             'address.string' => '住所は文字列で入力してください',

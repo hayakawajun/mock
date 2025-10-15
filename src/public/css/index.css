@@ -1,0 +1,68 @@
+.tab {
+    border-bottom: 2px solid #777777;
+}
+
+.tab-field {
+    width: 1540px;
+    margin: 0 auto;
+    display: flex;
+    padding-left: 160px;
+    padding-top: 30px;
+}
+
+.tab-label {
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin-right: 60px;
+    cursor: pointer;
+}
+
+.mylist {
+    color: red;
+}
+
+input[name="tab-name"] {
+    display: none;
+}
+
+.items {
+    width: 1540px;
+    margin: 0 auto;
+    padding: 70px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 25%;
+    text-align: left;
+    background-color: aqua;
+    margin-bottom: 70px;
+}
+
+.item-img {
+    display: block;
+    position: relative;
+    width: 90%;
+    padding-top: 90%;
+    margin: 0 auto;
+}
+
+.item-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-img__text {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    margin-left: 17px;
+}

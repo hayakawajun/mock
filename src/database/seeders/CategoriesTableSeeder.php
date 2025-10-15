@@ -15,74 +15,27 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'name' => 'ファッション'
+        $names = [
+            'ファッション',
+            '家電',
+            'インテリア',
+            'レディース',
+            'メンズ',
+            'コスメ',
+            '本',
+            'ゲーム',
+            'スポーツ',
+            'キッチン',
+            'ハンドメイド',
+            'アクセサリー',
+            'おもちゃ',
+            'ベビー・キッズ'
         ];
-        DB::table('categories')->insert($param);
 
-        $param = [
-            'name' => '家電'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'インテリア'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'レディース'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'メンズ'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'コスメ'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => '本'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'ゲーム'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'スポーツ'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'キッチン'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'ハンドメイド'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'アクセサリー'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'おもちゃ'
-        ];
-        DB::table('categories')->insert($param);
-
-        $param = [
-            'name' => 'ベビー・キッズ'
-        ];
-        DB::table('categories')->insert($param);
+        foreach ($names as $name) {
+            DB::table('categories')->insert([
+                'name' => $name
+            ]);
+        }
     }
 }

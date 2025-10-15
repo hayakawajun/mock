@@ -4,21 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/profile.css')}}">
 @endsection
 
-@section('link')
-<form class="search__form" action="">
-    @csrf
-    <input class="search__form--input" type="text" placeholder="なにをお探しですか？">
-    <button class="search__form--btn">検索</button>
-</form>
-@auth
-<nav class="header__nav">
-    <a class="header__nav-link" href="">ログアウト</a>
-    <a class="header__nav-link" href="">マイページ</a>
-    <a class="header__nav-link" href="">出品</a>
-</nav>
-@endauth
-@endsection
-
 @section('content')
 <form class="profile-form form-field" action="/profile_update" enctype="multipart/form-data" method="post">
     @csrf

@@ -28,7 +28,7 @@ class ProfileRequest extends FormRequest
             'postal_code' => 'required | string | regex:/^\d{3}-\d{4}$/',
             'address' => 'required | string | max:30',
             'building' => 'nullable | string | max:30',
-            'image' => 'nullable | mimes:jpg,jpeg,png | max:1024'
+            'image' => 'nullable | mimes:jpg,jpeg,png| max:1024'
         ];
     }
 

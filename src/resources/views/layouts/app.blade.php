@@ -11,13 +11,30 @@
 </head>
 
 <body>
+
     <div class="app">
+
         <header class="header">
             <div class="header__content">
-                <a href="/"><img src="{{ asset('image/logo.svg') }}" alt="coachtech"></a>
-                @yield('link')
+                <a class="header-logo" href="/"><img src="{{ asset('image/logo.svg') }}" alt="coachtech"></a>
+                <form class="search__form" action="">
+                    @csrf
+                    <input class="search__form--input" type="text" placeholder="なにをお探しですか？">
+                    <button class="search__form--btn">検索</button>
+                </form>
+                @auth
+                <nav class="header__nav">
+                    <form class="logout" action="/logout" method="post">
+                        @csrf
+                        <button class="logout__btn">ログアウト</button>
+                        <a class="header__nav-link" href="/">マイページ</a>
+                        <a class="header__nav-link" href="">出品</a>
+                    </form>
+                </nav>
+                @endauth
             </div>
         </header>
+
         @if(session('success'))
             <div class="alert">
                 <div class="alert__content">
@@ -32,10 +49,13 @@
                 </div>
             </div>
         @endif
+
         <div class="content">
             @yield('content')
         </div>
+
     </div>
+
 </body>
 
 </html>

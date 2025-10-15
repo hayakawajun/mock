@@ -1,35 +1,50 @@
-.tab {
-    border-bottom: 2px solid #777777;
+.tab-field {
+    max-width: 1540px;
+    margin: 0 auto;
 }
 
-.tab-field {
-    width: 1540px;
-    margin: 0 auto;
-    display: flex;
-    padding-left: 160px;
-    padding-top: 30px;
+.tab-field input:checked + .tab-label {
+    color: red;
 }
 
 .tab-label {
     font-size: 20px;
     font-weight: bold;
-    display: block;
-    margin-right: 60px;
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 50px;
     cursor: pointer;
 }
 
-.mylist {
-    color: red;
+.left {
+    margin-left: 150px;
 }
 
 input[name="tab-name"] {
     display: none;
 }
 
-.items {
-    width: 1540px;
-    margin: 0 auto;
+.index__tab-button:checked ~ .items__index,
+.mylist__tab-button:checked ~ .items__mylist {
+    display: block;
+}
+
+.items__index {
     padding: 70px;
+    width: 100%;
+    display: none;
+    border-top: solid 2px #555555;
+}
+
+.items__mylist {
+    padding: 70px;
+    width: 100%;
+    display: none;
+    border-top: solid 2px #555555;
+}
+
+.items {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -37,7 +52,6 @@ input[name="tab-name"] {
 .item {
     width: 25%;
     text-align: left;
-    background-color: aqua;
     margin-bottom: 70px;
 }
 

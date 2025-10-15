@@ -13,6 +13,8 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 use App\Http\Responses\CustomRegisterResponse;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use App\Http\Responses\CustomLoginResponse;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Http\Requests\LoginRequest;
 
@@ -39,6 +41,16 @@ class FortifyServiceProvider extends ServiceProvider
         RegisterResponseContract::class,
         CustomRegisterResponse::class
         );
+
+    /**
+     * ログイン後の遷移先を商品一覧画面に指定。作成したCustomLoginResponse.phpをバインド。
+     */
+
+        $this->app->singleton(
+        LoginResponseContract::class,
+        CustomLoginResponse::class
+        );
+
     }
 
     /**

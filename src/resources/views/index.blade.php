@@ -18,10 +18,13 @@
         <div class="items">
             @foreach($items as $item)
                 <div class="item">
-                    <a class="item-img" href="">
+                    <a class="item-img" href="/item/{{ $item->id }}">
                         <img src="{{ asset('storage/'.$item->image) }}" alt="商品画像">
                     </a>
-                    <a class="item-img__text" href="">{{ $item->name }}</a>
+                    <a class="item-img__text" href="/item/{{ $item->id }}">{{ $item->name }}</a>
+                    @if($item->purchase)
+                        <span class="sold">SOLD</span>
+                    @endif
                 </div>
             @endforeach
         </div>
@@ -33,15 +36,23 @@
                 @isset($likes)
                     @foreach($likes as $like)
                         <div class="item">
-                            <a class="item-img" href="">
+                            <a class="item-img" href="/item/{{ $item->id }}">
                                 <img src="{{ asset('storage/'.$like->image) }}" alt="商品画像">
                             </a>
-                            <a class="item-img__text" href="">{{ $like->name }}</a>
+                            <a class="item-img__text" href="/item/{{ $item->id }}">{{ $like->name }}</a>
+                                @if($like->purchase)
+                                    <span class="sold">SOLD</span>
+                                @endif
                         </div>
                     @endforeach
-                @else
-                    <h2>まだ「いいね」している商品はありません。
                 @endisset
+                @if($likes->isEmpty())
+                    @if(request()->filled('keyword'))
+                        <h2>検索した商品で「いいね」しているものはありません。</h2>
+                    @else
+                        <h2>「いいね」している商品はありません。</h2>
+                    @endif
+                @endif
             </div>
         </div>
     @endauth

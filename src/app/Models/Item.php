@@ -23,4 +23,16 @@ class Item extends Model
     {
         return $this->belongsToMany(User::class,'likes','item_id','user_id');
     }
+
+        public function purchase()
+    {
+        return $this->hasOne(Purchase::class);
+    }
+
+    public function scopeItemSearch($query,$keyword)
+    {
+        if(!empty($keyword)){
+            $query->where('name','like','%'.$keyword.'%');
+        }
+    }
 }

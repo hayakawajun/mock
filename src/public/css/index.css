@@ -41,7 +41,6 @@ input[name="tab-name"] {
     width: 100%;
     display: none;
     border-top: solid 2px #555555;
-    background-color: aqua;
 }
 
 .items {
@@ -74,10 +73,17 @@ input[name="tab-name"] {
 }
 
 .item-img__text {
-    display: block;
+    display: inline-block;
     font-size: 20px;
     font-weight: bold;
     color: #000000;
     text-decoration: none;
+    margin-left: 17px;
+}
+
+.sold {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
     margin-left: 17px;
 }

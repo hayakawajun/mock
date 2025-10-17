@@ -17,9 +17,9 @@
         <header class="header">
             <div class="header__content">
                 <a class="header-logo" href="/"><img src="{{ asset('image/logo.svg') }}" alt="coachtech"></a>
-                <form class="search__form" action="">
+                <form class="search__form" action="/search" method="get">
                     @csrf
-                    <input class="search__form--input" type="text" placeholder="なにをお探しですか？">
+                    <input class="search__form--input" type="text" name="keyword" value="{{ old('keyword') }}" placeholder="なにをお探しですか？">
                     <button class="search__form--btn">検索</button>
                 </form>
                 @auth

@@ -15,6 +15,32 @@ class PurchasesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $param = [
+            'user_id' => 1,
+            'item_id' => 6
+        ];
+
+        DB::table('purchases')->insert($param);
+
+        $param = [
+            'user_id' => 1,
+            'item_id' => 9
+        ];
+
+        DB::table('purchases')->insert($param);
+
+        $param = [
+            'user_id' => 2,
+            'item_id' => 1
+        ];
+
+        DB::table('purchases')->insert($param);
+
+        $param = [
+            'user_id' => 2,
+            'item_id' => 4
+        ];
+
+        DB::table('purchases')->insert($param);
     }
 }

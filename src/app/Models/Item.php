@@ -18,4 +18,9 @@ class Item extends Model
         'price',
         'image'
     ];
+
+    public function likers()
+    {
+        return $this->belongsToMany(User::class,'likes','item_id','user_id');
+    }
 }

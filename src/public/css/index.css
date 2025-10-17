@@ -9,7 +9,7 @@
 
 .tab-label {
     font-size: 20px;
-    font-weight: bold;
+font-weight: bold;
     display: inline-block;
     margin-top: 40px;
     margin-left: 50px;
@@ -41,6 +41,7 @@ input[name="tab-name"] {
     width: 100%;
     display: none;
     border-top: solid 2px #555555;
+    background-color: aqua;
 }
 
 .items {

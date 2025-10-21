@@ -8,7 +8,7 @@
 <div class="content">
     <form class="register-form form-field" action="/register" method="post" >
         @csrf
-        <h1 class="content__heading">会員登録</h1>
+        <h2 class="content__heading">会員登録</h2>
         <div class="form__group">
             <label class="input-label" for="name">ユーザー名</label>
             <input class="input-window" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="例:山田太郎">

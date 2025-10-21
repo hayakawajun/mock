@@ -8,7 +8,7 @@
 <div class="content">
     <form class="login-form form-field" action="/login" method="post" >
         @csrf
-        <h1 class="content__heading">ログイン</h1>
+        <h2 class="content__heading">ログイン</h2>
         <div class="form__group">
             <label class="input-label" for="email">メールアドレス</label>
             <input class="input-window" type="text" name="email" id="email" placeholder="例:test@example.com">

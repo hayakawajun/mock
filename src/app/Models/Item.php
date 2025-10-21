@@ -19,6 +19,11 @@ class Item extends Model
         'image'
     ];
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class,'item_category','item_id','category_id');
+    }
+
     public function likers()
     {
         return $this->belongsToMany(User::class,'likes','item_id','user_id');

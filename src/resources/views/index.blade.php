@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-<div class="tab-field">
+<div class="tabs">
 
     <input class="index__tab-button" type="radio" id= "index" name="tab-name" checked>
     <label class="tab-label left" for="index">おすすめ</label>
     @auth
-    <input type="radio" class="mylist__tab-button" id="mylist" name="tab-name">
+    <input class="mylist__tab-button" type="radio" id="mylist" name="tab-name">
     <label class="tab-label" for="mylist">マイリスト</label>
     @endauth
 
@@ -27,6 +27,11 @@
                     @endif
                 </div>
             @endforeach
+            @if(request()->filled('keyword'))
+                @if($items->isEmpty())
+                    <h2>検索結果に該当する商品はありません。</h2>
+                @endif
+            @endif
         </div>
     </div>
 
@@ -36,10 +41,10 @@
                 @isset($likes)
                     @foreach($likes as $like)
                         <div class="item">
-                            <a class="item-img" href="/item/{{ $item->id }}">
+                            <a class="item-img" href="/item/{{ $like->id }}">
                                 <img src="{{ asset('storage/'.$like->image) }}" alt="商品画像">
                             </a>
-                            <a class="item-img__text" href="/item/{{ $item->id }}">{{ $like->name }}</a>
+                            <a class="item-img__text" href="/item/{{ $like->id }}">{{ $like->name }}</a>
                                 @if($like->purchase)
                                     <span class="sold">SOLD</span>
                                 @endif

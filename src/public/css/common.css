@@ -123,7 +123,7 @@ input::placeholder {
 
 /* バリデーションエラーメッセージ */
 .error-message {
-    color: red;
+    color: #ff574e;
     line-height: 0;
 }
 
@@ -167,7 +167,7 @@ input::placeholder {
 /* 送信ボタン */
 .submit-btn {
     width: 100%;
-    background-color: red;
+    background-color: #ff574e;
     color: #ffffff;
     padding: 8px;
     font-size: 18px;
@@ -187,10 +187,10 @@ input::placeholder {
 .upload__image-btn {
     width: 150px;
     display: block;
-    color: red;
+    color: #ff574e;
     padding: 8px 10px;
     margin-top: 30px;
-    border: solid 1px red;
+    border: solid 1px #ff574e;
     border-radius: 4px;
     background-color: #ffffff;
     cursor: pointer;

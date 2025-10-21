@@ -15,40 +15,46 @@ class ItemController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user();
-            $items = Item::where('user_id','!=',$user->id)->get();
-            $likes = $user->likedItems;
+            $items = Item::where('user_id','!=',$user->id)->with('purchase')->get();
+            $likes = $user->likedItems()->with('purchase')->get();
+
             return view('index',compact('items','likes'));
 
         }else{
             $items = Item::with('purchase')->get();
+
             return view('index',compact('items'));
         }
     }
 
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword');
-        session()->put('search_keyword',$keyword);
-
         if(Auth::check()){
             $user = Auth::user();
             $items = Item::where('user_id','!=',$user->id)
-                ->ItemSearch($request->keyword)
-                ->get();
+                ->ItemSearch($request->keyword)->with('purchase')->get();
             $likes = $user->likedItems()
-                ->ItemSearch($request->keyword)
-                ->get();
-            return view('index',compact('items','likes'));
+                ->ItemSearch($request->keyword)->with('purchase')->get();
+
+                return view('index',compact('items','likes'));
 
         }else{
             $items = Item::with('purchase')->ItemSearch($request->keyword)->get();
+
             return view('index',compact('items'));
         }
     }
 
     public function show($id)
     {
-        $item = Item::findOrFail($id);
+        $user = Auth::user();
+        $item = Item::withExists(['likers as liked_by_user' => function ($query) use ($user){
+            if($user){
+                $query->where('user_id',$user->id);
+            }
+        }])
+        ->with(['categories','purchase'])->findOrFail($id);
+
         return view('detail',compact('item'));
     }
 }

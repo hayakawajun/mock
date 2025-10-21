@@ -8,7 +8,7 @@
 <div class="content">
     <form class="profile-form form-field" action="/profile_update" enctype="multipart/form-data" method="post">
         @csrf
-        <h1 class="content__heading">プロフィール設定</h1>
+        <h2 class="content__heading">プロフィール設定</h2>
         <div class="user-image">
             @isset($profile->image)
                 <div class="uploaded__user-image">

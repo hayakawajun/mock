@@ -19,19 +19,24 @@ class Item extends Model
         'image'
     ];
 
-    public function categories()
+    public function categories()    //  複数のカテゴリーID取得用のリレーション。多対多
     {
         return $this->belongsToMany(Category::class,'item_category','item_id','category_id');
     }
 
-    public function likers()
+    public function likers()    //  いいねしているユーザーID取得用のリレーション。多対多
     {
         return $this->belongsToMany(User::class,'likes','item_id','user_id');
     }
 
-        public function purchase()
+    public function purchase()  //  1つの商品は1つの購入状況を持つ。1対1
     {
         return $this->hasOne(Purchase::class);
+    }
+
+    public function comments()  //  1つの商品は複数のコメントを持つ。1対多
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function scopeItemSearch($query,$keyword)

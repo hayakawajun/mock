@@ -42,17 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile(){
+    public function profile()   //  1人のユーザーは1つのプロフィール情報を持つ。1対1
+    {
         return $this->hasOne(Profile::class);
     }
 
-    public function likedItems()
+    public function likedItems()    //  いいねしている商品ID取得用のリレーション。多対多
     {
         return $this->belongsToMany(Item::class,'likes','user_id','item_id');
     }
 
-    public function purchasedItems()
+    public function purchasedItems()    //  これ、、、いらないかな？
     {
         return $this->belongsToMany(Item::class,'purchases','user_id','item_id');
+    }
+
+    public function comments()  //  1人のユーザーは複数のコメントを投稿する。1対多
+    {
+        return $this->hasMany(Comment::class);
     }
 }

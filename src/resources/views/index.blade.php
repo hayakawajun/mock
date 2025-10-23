@@ -10,18 +10,18 @@
     <input class="index__tab-button" type="radio" id= "index" name="tab-name" checked>
     <label class="tab-label left" for="index">おすすめ</label>
     @auth
-    <input class="mylist__tab-button" type="radio" id="mylist" name="tab-name">
-    <label class="tab-label" for="mylist">マイリスト</label>
+        <input class="mylist__tab-button" type="radio" id="mylist" name="tab-name">
+        <label class="tab-label" for="mylist">マイリスト</label>
     @endauth
 
     <div class="items__index">
         <div class="items">
             @foreach($items as $item)
                 <div class="item">
-                    <a class="item-img" href="/item/{{ $item->id }}">
+                    <a class="item-img" href="{{ route('item.show',['id' => $item->id]) }}">
                         <img src="{{ asset('storage/'.$item->image) }}" alt="商品画像">
                     </a>
-                    <a class="item-img__text" href="/item/{{ $item->id }}">{{ $item->name }}</a>
+                    <a class="item-img__text" href="{{ route('item.show',['id' => $item->id]) }}">{{ $item->name }}</a>
                     @if($item->purchase)
                         <span class="sold">SOLD</span>
                     @endif
@@ -41,10 +41,10 @@
                 @isset($likes)
                     @foreach($likes as $like)
                         <div class="item">
-                            <a class="item-img" href="/item/{{ $like->id }}">
+                            <a class="item-img" href="{{ route('item.show',['id' => $like->id]) }}">
                                 <img src="{{ asset('storage/'.$like->image) }}" alt="商品画像">
                             </a>
-                            <a class="item-img__text" href="/item/{{ $like->id }}">{{ $like->name }}</a>
+                            <a class="item-img__text" href="{{ route('item.show',['id' => $like->id]) }}">{{ $like->name }}</a>
                                 @if($like->purchase)
                                     <span class="sold">SOLD</span>
                                 @endif

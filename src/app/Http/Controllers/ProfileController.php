@@ -44,6 +44,6 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect('/mypage/profile')->with('success','プロフィールが更新されました');
+        return redirect()->route('profile.show')->with('success','プロフィールが更新されました');
     }
 }

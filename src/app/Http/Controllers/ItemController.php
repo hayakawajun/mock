@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Purchase;
+use App\Models\Comment;
 
 
 class ItemController extends Controller
@@ -53,7 +54,15 @@ class ItemController extends Controller
                 $query->where('user_id',$user->id);
             }
         }])
-        ->with(['categories','purchase'])->findOrFail($id);
+        ->withCount('likers')
+        ->with(['categories','purchase'])
+        ->with([
+            'comments' => function ($query){
+                $query->with('user.profile');
+            }
+        ])
+        ->withCount('comments')
+        ->findOrFail($id);
 
         return view('detail',compact('item'));
     }

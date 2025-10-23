@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-    <form class="profile-form form-field" action="/profile_update" enctype="multipart/form-data" method="post">
+    <form class="profile-form form-field" action="{{ route('profile.update') }}" enctype="multipart/form-data" method="post">
         @csrf
         <h2 class="content__heading">プロフィール設定</h2>
         <div class="user-image">

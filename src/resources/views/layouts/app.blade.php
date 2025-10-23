@@ -16,21 +16,27 @@
 
         <header class="header">
             <div class="header__content">
-                <a class="header-logo" href="/"><img src="{{ asset('image/logo.svg') }}" alt="coachtech"></a>
+                <a class="header-logo" href="{{ route('item.index') }}"><img src="{{ asset('image/logo.svg') }}" alt="coachtech"></a>
                 <form class="search__form" action="/search" method="get">
                     @csrf
                     <input class="search__form--input" type="text" name="keyword" value="{{ old('keyword') }}" placeholder="なにをお探しですか？">
                     <button class="search__form--btn">検索</button>
                 </form>
                 @auth
-                <nav class="header__nav">
-                    <form class="logout" action="/logout" method="post">
-                        @csrf
-                        <button class="logout__btn">ログアウト</button>
-                        <a class="header__nav-link" href="/">マイページ</a>
-                        <a class="header__nav-link" href="">出品</a>
-                    </form>
-                </nav>
+                    <nav class="header__nav">
+                        <form class="logout" action="/logout" method="post">
+                            @csrf
+                            <button class="logout__btn">ログアウト</button>
+                            <a class="header__nav-link" href="">マイページ</a>
+                            <a class="header__nav-link" href="">出品</a>
+                        </form>
+                    </nav>
+                @else
+                    <nav class="header__nav">
+                        <a class="header__nav-link" href="/login">ログイン</a>
+                        <a class="header__nav-link" href="/register">会員登録</a>
+                        <a class="header__nav-link" href="{{ route('item.index') }}">商品一覧</a>
+                    </nav>
                 @endauth
             </div>
         </header>

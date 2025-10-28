@@ -14,6 +14,7 @@ Route::get('/search',[ItemController::class,'search'])->name('item.search');
 Route::get('/item/{id}',[ItemController::class,'show'])->name('item.show');
 
 Route::middleware('auth')->group(function(){
+    Route::get('/mypage',[ProfileController::class,'index'])->name('profile.index');
     Route::get('/mypage/profile',[ProfileController::class,'show'])->name('profile.show');
     Route::post('/profile_update',[ProfileController::class,'update'])->name('profile.update');
     Route::post('/like/{item}',[LikeController::class,'toggle'])->name('like.toggle');

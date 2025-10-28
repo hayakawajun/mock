@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Item;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    public function index()
+    {
+            $user = Auth::user();
+            $profile = $user->profile;
+            $exhibitedItems = $user->exhibitedItems()->with('purchase')->get();
+            $purchasedItems = $user->purchasedItems()->get();
+
+            return view('mypage',compact('profile','exhibitedItems','purchasedItems'));
+    }
+
+
     public function show(){
         $profile = Auth::user()->profile;
         return view('profile',compact('profile'));

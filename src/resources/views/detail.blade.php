@@ -49,7 +49,9 @@
             @if($item->purchase)
                 <p class="sold-out">SOLD</p>
             @else
-                <a class="purchase__btn" href="{{ route('item.order',$item->id) }}">購入手続きへ</a>
+                @auth
+                    <a class="purchase__btn" href="{{ route('item.order',$item->id) }}">購入手続きへ</a>
+                @endauth
             @endif
         </div>
 

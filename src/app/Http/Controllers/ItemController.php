@@ -66,4 +66,27 @@ class ItemController extends Controller
 
         return view('detail',compact('item'));
     }
+
+    /* public function show(Item $item)　loadメソッド使用時のコード
+    {
+        $user = Auth::user();
+        $item->load([
+            'likers' => function ($query) use ($user){
+                if($user){
+                    $query->where('user_id',$user->id);
+                }
+            },
+            'categories',
+            'purchase',
+            'comments' => function ($query){
+                $query->with('user.profile');
+            }
+        ]);
+
+        $item->loadCount('likers','comments');
+
+        $item->liked_by_user = $user && $item->likers->isNotEmpty();
+
+        return view('detail',compact('item'));
+    } */
 }

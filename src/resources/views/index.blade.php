@@ -18,10 +18,10 @@
         <div class="items">
             @foreach($items as $item)
                 <div class="item">
-                    <a class="item-img" href="{{ route('item.show',['id' => $item->id]) }}">
+                    <a class="item-img" href="{{ route('item.show',$item->id) }}">
                         <img src="{{ asset('storage/'.$item->image) }}" alt="商品画像">
                     </a>
-                    <a class="item-img__text" href="{{ route('item.show',['id' => $item->id]) }}">{{ $item->name }}</a>
+                    <a class="item-img__text" href="{{ route('item.show',$item->id) }}">{{ $item->name }}</a>
                     @if($item->purchase)
                         <span class="sold">SOLD</span>
                     @endif

@@ -29,6 +29,11 @@ class Item extends Model
         return $this->belongsToMany(User::class,'likes','item_id','user_id');
     }
 
+        public function purchasers()    //  //  商品を購入したユーザーの情報取得用のリレーション。多対多
+    {
+        return $this->belongsToMany(User::class,'purchases','item_id','user_id');
+    }
+
     public function purchase()  //  1つの商品は1つの購入状況を持つ。1対1
     {
         return $this->hasOne(Purchase::class);

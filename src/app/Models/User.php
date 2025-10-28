@@ -52,7 +52,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Item::class,'likes','user_id','item_id');
     }
 
-    public function purchasedItems()    //  これ、、、いらないかな？
+    public function exhibitedItems()    //  1人のユーザーは複数の商品を出品する。1対多
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function purchasedItems()    //  ユーザーが購入した商品情報取得用のリレーション。多対多
     {
         return $this->belongsToMany(Item::class,'purchases','user_id','item_id');
     }

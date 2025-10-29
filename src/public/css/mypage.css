@@ -1,97 +1,4 @@
-/* タブ */
-.tabs {
-    max-width: 1540px;
-    margin: 0 auto;
-    padding-top: 40px;
-}
-
-.tabs input:checked+.tab-label {
-    color: red;
-}
-
-.tab-label {
-    font-size: 20px;
-    font-weight: bold;
-    display: inline-block;
-    margin-left: 50px;
-    cursor: pointer;
-}
-
-.left {
-    margin-left: 150px;
-}
-
-input[name="tab-name"] {
-    display: none;
-}
-
-.index__tab-button:checked~.items__index,
-.mylist__tab-button:checked~.items__mylist {
-    display: block;
-}
-
-/* タブ押下で出現するパーツ */
-.items__index {
-    padding: 70px;
-    width: 100%;
-    display: none;
-    border-top: solid 2px #555555;
-}
-
-.items__mylist {
-    padding: 70px;
-    width: 100%;
-    display: none;
-    border-top: solid 2px #555555;
-}
-
-.items {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.item {
-    width: 25%;
-    text-align: left;
-    margin-bottom: 70px;
-}
-
-.item-img {
-    display: block;
-    position: relative;
-    width: 90%;
-    padding-top: 90%;
-    margin: 0 auto;
-}
-
-.item-img img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.item-img__text {
-    display: inline-block;
-    font-size: 20px;
-    font-weight: bold;
-    color: #000000;
-    text-decoration: none;
-    margin-left: 17px;
-    line-height: 0px;
-}
-
-.sold {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff574e;
-    margin-left: 17px;
-}
-
-/* マイページ特有の領域 */
+/* プロフィール領域 */
 .user {
     max-width: 1540px;
     height: 300px;
@@ -145,4 +52,97 @@ input[name="tab-name"] {
 
 .profile-edit__link:active {
     opacity: 0.5;
+}
+
+/* タブ */
+.tabs {
+    max-width: 1540px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.tabs input:checked+.tab-label {
+    color: red;
+}
+
+.tab-label {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.left {
+    margin-left: 150px;
+}
+
+input[name="tab-name"] {
+    display: none;
+}
+
+.exhibition__tab-button:checked~.exhibited-items,
+.purchase__tab-button:checked~.purchased-items {
+    display: block;
+}
+
+/* タブ押下で出現するパーツ */
+.exhibited-items {
+    padding: 70px;
+    width: 100%;
+    display: none;
+    border-top: solid 2px #555555;
+}
+
+.purchased-items {
+    padding: 70px;
+    width: 100%;
+    display: none;
+    border-top: solid 2px #555555;
+}
+
+.items {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 25%;
+    text-align: left;
+    margin-bottom: 70px;
+}
+
+.item-img {
+    display: block;
+    position: relative;
+    width: 90%;
+    padding-top: 90%;
+    margin: 0 auto;
+}
+
+.item-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-img__text {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    margin-left: 17px;
+    line-height: 0px;
+}
+
+.sold {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff574e;
+    margin-left: 17px;
 }

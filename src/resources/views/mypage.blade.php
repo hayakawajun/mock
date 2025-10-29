@@ -24,12 +24,12 @@
 
 <div class="tabs">
 
-    <input class="index__tab-button" type="radio" id= "index" name="tab-name" checked>
-    <label class="tab-label left" for="index">出品した商品</label>
-    <input class="mylist__tab-button" type="radio" id="mylist" name="tab-name">
-    <label class="tab-label" for="mylist">購入した商品</label>
+    <input class="exhibition__tab-button" type="radio" id= "exhibition" name="tab-name" checked>
+    <label class="tab-label left" for="exhibition">出品した商品</label>
+    <input class="purchase__tab-button" type="radio" id="purchase" name="tab-name">
+    <label class="tab-label" for="purchase">購入した商品</label>
 
-    <div class="items__index">
+    <div class="exhibited-items">
         <div class="items">
             @forelse($exhibitedItems as $item)
                 <div class="item">
@@ -44,11 +44,10 @@
             @empty
                 <h2>出品した商品はありません。</h2>
             @endforelse
-
         </div>
     </div>
 
-    <div class="items__mylist">
+    <div class="purchased-items">
         <div class="items">
             @forelse($purchasedItems as $item)
                 <div class="item">

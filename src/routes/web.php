@@ -20,4 +20,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/like/{item}',[LikeController::class,'toggle'])->name('like.toggle');
     Route::post('/post',[CommentController::class,'store'])->name('comment.post');
     Route::get('/purchase/{item}',[PurchaseController::class,'order'])->name('item.order');
+    Route::post('/purchase/{item}',[PurchaseController::class,'addressUpdate'])->name('address.update');
+    Route::get('/purchase/address/{item}',[PurchaseController::class,'addressEdit'])->name('address.edit');
+    Route::post('/payment',[PurchaseController::class,'payment'])->name('item.payment');
 });

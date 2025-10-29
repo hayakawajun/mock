@@ -38,26 +38,23 @@
     @auth
         <div class="items__mylist">
             <div class="items">
-                @isset($likes)
-                    @foreach($likes as $like)
-                        <div class="item">
-                            <a class="item-img" href="{{ route('item.show',['id' => $like->id]) }}">
-                                <img src="{{ asset('storage/'.$like->image) }}" alt="商品画像">
-                            </a>
-                            <a class="item-img__text" href="{{ route('item.show',['id' => $like->id]) }}">{{ $like->name }}</a>
-                                @if($like->purchase)
-                                    <span class="sold">SOLD</span>
-                                @endif
-                        </div>
-                    @endforeach
-                @endisset
-                @if($likes->isEmpty())
+                @forelse($likes as $like)
+                    <div class="item">
+                        <a class="item-img" href="{{ route('item.show',['id' => $like->id]) }}">
+                            <img src="{{ asset('storage/'.$like->image) }}" alt="商品画像">
+                        </a>
+                        <a class="item-img__text" href="{{ route('item.show',['id' => $like->id]) }}">{{ $like->name }}</a>
+                            @if($like->purchase)
+                                <span class="sold">SOLD</span>
+                            @endif
+                    </div>
+                @empty
                     @if(request()->filled('keyword'))
                         <h2>検索した商品で「いいね」しているものはありません。</h2>
                     @else
                         <h2>「いいね」している商品はありません。</h2>
                     @endif
-                @endif
+                @endforelse
             </div>
         </div>
     @endauth

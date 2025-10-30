@@ -5,14 +5,6 @@
 @endsection
 
 @section('content')
-@if(!$profile)
-    <div class="alert__danger">
-        <div class="alert__content">
-            <p class="alert-massage">配送先の住所が未設定です</p>
-        </div>
-    </div>
-@endif
-
 <form class="purchase-form" action="{{ route('item.payment') }}" method="post">
     @csrf
     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -34,7 +26,7 @@
                 <p class="error-message">{{ $message }}</p>
             @enderror
             <div class="payment__select">
-                <select class="payment__select-box" name="payment" id="">
+                <select class="payment__select-box" name="payment" id="payment-select">
                     <option value="">選択してください</option>
                     <option value="コンビニ払い">コンビニ払い</option>
                     <option value="カード払い">カード払い</option>
@@ -63,8 +55,8 @@
                 @else
                     <p>&#12306;{{ $profile->postal_code }}</p>
                     <p>{{ $profile->address }}
-                    <input type="hidden" name="postal_code" value="{{ $profile->postal_code }}">
-                    <input type="hidden" name="address" value="{{ $profile->address }}">
+                        <input type="hidden" name="postal_code" value="{{ $profile->postal_code }}">
+                        <input type="hidden" name="address" value="{{ $profile->address }}">
                         @if($profile->building)
                             {{ $profile->building }}
                             <input type="hidden" name="building" value="{{ $profile->building }}">
@@ -83,11 +75,12 @@
             </tr>
             <tr class="payment-information__detail">
                 <td class="payment-information__detail-title">支払い方法</td>
-                <td>コンビニ払い</td>
+                <td><span id="payment__display-area">未選択</span></td>
             </tr>
         </table>
         <button class="purchase__btn" type="submit">購入する</button>
     </div>
 
 </form>
+<script src="{{ asset('js/payment.js') }}"></script>
 @endsection('content')

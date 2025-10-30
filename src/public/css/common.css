@@ -79,12 +79,13 @@ input::placeholder {
 }
 
 .header__nav-link:last-of-type {
-    padding: 5px 20px;
+    padding: 9px 20px;
     color: #000000;
     font-weight: bold;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
+    margin-right: 0px;
 }
 
 /* セッションメッセージ */

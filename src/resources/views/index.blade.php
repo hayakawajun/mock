@@ -60,6 +60,4 @@
     @endauth
 
 </div>
-
-<a href="/mypage/profile">プロフィール設定画面へ</a>
 @endsection('content')

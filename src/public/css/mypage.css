@@ -32,6 +32,10 @@
     font-size: 28px;
 }
 
+.no-profile {
+    color: #6d6d6d;
+}
+
 .profile-edit {
     display: flex;
     align-items: center;

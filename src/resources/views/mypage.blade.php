@@ -7,15 +7,21 @@
 @section('content')
 <div class="user">
     <div class="user-profile">
-        <div class="user-image">
-            @if($profile->user->profile && $profile->user->profile->image)
-                <img src="{{ asset('storage/'.$profile->user->profile->image) }}" alt="プロフィール画像">
-            @else
-                <img src="{{ asset('image/default.png') }}" alt="デフォルトのプロフィール画像">
-            @endif
-        </div>
-        <h2>{{ $profile->user->name }}</h2>
-
+        @empty($profile)
+            <div class="no-profile">
+                <h3>プロフィールが未設定です。</h3>
+                <p>右の「プロフィールを編集」ボタンから設定を行ってください。</p>
+            </div>
+        @else
+            <div class="user-image">
+                @if($profile->user->profile && $profile->user->profile->image)
+                    <img src="{{ asset('storage/'.$profile->user->profile->image) }}" alt="プロフィール画像">
+                @else
+                    <img src="{{ asset('image/default.png') }}" alt="デフォルトのプロフィール画像">
+                @endif
+            </div>
+            <h2>{{ $profile->user->name }}</h2>
+        @endempty
     </div>
     <div class="profile-edit">
         <a class="profile-edit__link" href="{{ route('profile.show') }}">プロフィールを編集</a>
@@ -63,6 +69,4 @@
     </div>
 
 </div>
-
-<a href="/mypage/profile">プロフィール設定画面へ</a>
 @endsection('content')

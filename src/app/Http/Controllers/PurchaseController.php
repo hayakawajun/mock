@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AddressRequest;
+use App\Http\Requests\PurchaseRequest;
+
 
 class PurchaseController extends Controller
 {
@@ -25,7 +28,7 @@ class PurchaseController extends Controller
         return view('address_update',compact('item','profile'));
     }
 
-    public function addressUpdate(Request $request,Item $item)
+    public function addressUpdate(AddressRequest $request,Item $item)
     {
         $user = Auth::user();
         $profile = $user->profile;
@@ -44,7 +47,18 @@ class PurchaseController extends Controller
         return redirect()->route('item.order',['item' => $item])->with('success','配送先住所を登録しました');
     }
 
-    public function payment(Request $request)
+    public function payment(PurchaseRequest $request)
     {
+        $purchase = $request->only([
+            'user_id',
+            'item_id',
+            'payment',
+            'postal_code',
+            'address',
+            'building'
+        ]);
+        Purchase::create($purchase);
+
+        return redirect()->route('item.index')->with('success','商品の購入が完了しました');
     }
 }

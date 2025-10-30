@@ -35,7 +35,6 @@
                     <nav class="header__nav">
                         <a class="header__nav-link" href="/login">ログイン</a>
                         <a class="header__nav-link" href="/register">会員登録</a>
-                        <a class="header__nav-link" href="{{ route('item.index') }}">商品一覧</a>
                     </nav>
                 @endauth
             </div>

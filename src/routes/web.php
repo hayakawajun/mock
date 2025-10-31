@@ -22,5 +22,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/purchase/{item}',[PurchaseController::class,'order'])->name('item.order');
     Route::post('/purchase/{item}',[PurchaseController::class,'addressUpdate'])->name('address.update');
     Route::get('/purchase/address/{item}',[PurchaseController::class,'addressEdit'])->name('address.edit');
-    Route::post('/payment',[PurchaseController::class,'payment'])->name('item.payment');
+    Route::post('/payment',[PurchaseController::class,'createCheckoutSession'])->name('item.payment');
+
+    Route::get('/payment/success', [PurchaseController::class, 'success'])->name('payment.success');
+    Route::get('/payment/cancel', [PurchaseController::class, 'cancel'])->name('payment.cancel');
 });

@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Purchase;
+use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddressRequest;
 use App\Http\Requests\PurchaseRequest;
@@ -19,9 +20,11 @@ class PurchaseController extends Controller
 {
     public function order(Item $item)
     {
-        $profile = Auth::user()->profile;
+        $user = Auth::user();
+        $profile = $user->profile;
+        $shippingAddresses = ShippingAddress::where('user_id',$user->id)->get();
 
-        return view('purchase',compact('item','profile'));
+        return view('purchase',compact('item','profile','shippingAddresses'));
     }
 
     public function addressEdit(Item $item)

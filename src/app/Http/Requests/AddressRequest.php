@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class AddressRequest extends FormRequest
 {
@@ -30,7 +32,7 @@ class AddressRequest extends FormRequest
         ];
     }
 
-        public function messages()
+    public function messages()
     {
         return [
             'postal_code.required' => '郵便番号は必ず入力してください',
@@ -44,4 +46,33 @@ class AddressRequest extends FormRequest
         ];
     }
 
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+
+            $commonConditions = [
+                'user_id' => auth()->id(),
+                'postal_code' => $this->postal_code,
+                'address' => $this->address,
+                'building' => $this->building
+            ];
+
+            $existsInProfile = \DB::table('profiles')
+                ->where($commonConditions)
+                ->exists();
+
+            if($existsInProfile){
+                $validator->errors()->add('building','プロフィールと同一の住所は設定できません');
+                return;
+            }
+
+            $existsInShipping = \DB::table('shipping_addresses')
+                ->where($commonConditions)
+                ->exists();
+
+            if($existsInShipping){
+                $validator->errors()->add('building','入力した住所はすでに登録されています');
+            }
+        });
+    }
 }

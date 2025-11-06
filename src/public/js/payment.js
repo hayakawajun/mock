@@ -2,10 +2,13 @@ const selectElement = document.getElementById('payment-select');
 
 const displayArea = document.getElementById('payment__display-area');
 
+function updateDisplayArea() {
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    displayArea.textContent = selectedOption.textContent;
+}
+
 selectElement.addEventListener('change', (event) => {
-    const selectedOption = event.target.options[event.target.selectedIndex];
-
-    const selectedText = selectedOption.textContent;
-
-    displayArea.textContent = selectedText;
+    updateDisplayArea();
 });
+
+updateDisplayArea();

@@ -67,7 +67,13 @@
             </p>
         </div>
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-        <button class="submit-btn">更新する</button>
+        <button class="submit-btn">
+            @empty($profile)
+                登録する
+            @else
+                更新する
+            @endempty
+        </button>
     </form>
 </div>
 @endsection('content')

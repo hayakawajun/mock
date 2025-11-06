@@ -66,4 +66,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function shippingAddresses()  //  1人のユーザーは複数の配送先住所を持つ。1対多
+    {
+        return $this->hasMany(ShippingAddress::class);
+    }
+
 }

@@ -26,10 +26,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/purchase/{item}',[PurchaseController::class,'order'])->name('item.order');
     Route::post('/payment',[PurchaseController::class,'payment'])->name('item.payment');
 
-    Route::get('/purchase/address/create/{item}',[ShippingAddressController::class,'create'])->name('address.create');
-    Route::post('/purchase/address/store/{item}',[ShippingAddressController::class,'store'])->name('address.store');
-    Route::get('/purchase/address/edit/{item}/{shippingAddress}',[ShippingAddressController::class,'edit'])->name('address.edit');
-    Route::patch('/purchase/address/update/{item}',[ShippingAddressController::class,'addressUpdate'])->name('address.update');
+    Route::get('/purchase/address/edit/{item}/{shippingAddress?}',[ShippingAddressController::class,'edit'])->name('address.edit');
+    Route::post('/purchase/address/update/{item}',[ShippingAddressController::class,'update'])->name('address.update');
     Route::get('/purchase/address/delete/{item}/{shippingAddress}',[ShippingAddressController::class,'destroy'])->name('address.delete');
 
 

@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="user">
+
     <div class="user-profile">
         @empty($profile)
             <div class="no-profile">
@@ -26,6 +27,7 @@
     <div class="profile-edit">
         <a class="profile-edit__link" href="{{ route('profile.show') }}">プロフィールを編集</a>
     </div>
+
 </div>
 
 <div class="tabs">

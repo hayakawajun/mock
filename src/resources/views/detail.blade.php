@@ -27,6 +27,7 @@
                 <p class="item-bland">{{ $item->bland }}</p>
             @endif
             <p class="item-price"><span>&yen;</span>{{ number_format($item->price) }}<span> (税込)</span></p>
+
             <form class="icons" action="{{ route('like.toggle',$item->id) }}" method="post">
                 @csrf
                 <div class="icon">
@@ -41,11 +42,13 @@
                     @endauth
                     <p>{{ $item->likers_count }}</p>
                 </div>
+
                 <div class="icon">
                     <img src="{{ asset('image/ふきだしアイコン.png') }}" alt="ふきだしアイコン">
                     <p>{{ $item->comments_count }}</p>
                 </div>
             </form>
+
             @if($item->purchase)
                 <p class="sold-out">SOLD</p>
             @else
@@ -72,6 +75,7 @@
                     @endforeach
                 </div>
             </div>
+
             <div class="status">
                 <div class="information-subtitle">
                     <h4>商品の状態</h4>
@@ -121,6 +125,7 @@
                 <input type="hidden" name="item_id" value="{{ $item->id }}">
             </form>
         @endauth
+
     </div>
 
 </div>

@@ -12,32 +12,26 @@ use App\Http\Requests\AddressRequest;
 
 class ShippingAddressController extends Controller
 {
-    public function create(Item $item)
-    {
-        return view('address_create',compact('item'));
-    }
-
-    public function store(AddressRequest $request, Item $item)
-    {
-        $address = $request->validated();
-        $address['user_id'] = Auth::id();
-        ShippingAddress::create($address);
-
-        return redirect()->route('item.order',['item' => $item])->with('success','配送先住所を登録しました');
-    }
-
     public function edit(Item $item, ShippingAddress $shippingAddress)
     {
-        return view('address_update',compact('item','shippingAddress'));
+        return view('shipping_address',compact('item','shippingAddress'));
     }
 
-    public function addressUpdate(AddressRequest $request, Item $item)
+    public function update(AddressRequest $request, Item $item)
     {
         $address = $request->validated();
         $address['user_id'] = Auth::id();
-        ShippingAddress::find($request->id)->update($address);
 
-        return redirect()->route('item.order',['item' => $item])->with('success','配送先住所を更新しました');
+        if(empty($request->id)){
+            ShippingAddress::create($address);
+            $message = '配送先住所を登録しました';
+
+        }else{
+            ShippingAddress::find($request->id)->update($address);
+            $message = '配送先住所を更新しました';
+        }
+
+        return redirect()->route('item.order',['item' => $item])->with('success',$message);
     }
 
     public function destroy(Item $item, ShippingAddress $shippingAddress)

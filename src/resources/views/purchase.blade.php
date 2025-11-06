@@ -130,7 +130,7 @@
                 @endif
 
                 <div class="delivery-address__addition">
-                    <a class="address__create" href="{{ route('address.create',$item->id) }}">配送先住所を新たに追加</a>
+                    <a class="address__create" href="{{ route('address.edit',[ 'item' => $item->id, 'shippingAddress' => null ]) }}">配送先住所を新たに追加</a>
                 </div>
 
             @endempty

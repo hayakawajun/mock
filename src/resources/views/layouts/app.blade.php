@@ -22,6 +22,7 @@
                     <input class="search__form--input" type="text" name="keyword" value="{{ old('keyword') }}" placeholder="なにをお探しですか？">
                     <button class="search__form--btn">検索</button>
                 </form>
+
                 @auth
                     <nav class="header__nav">
                         <form class="logout" action="/logout" method="post">
@@ -37,20 +38,21 @@
                         <a class="header__nav-link" href="/register">会員登録</a>
                     </nav>
                 @endauth
+
             </div>
         </header>
 
         @if(session('success'))
             <div class="alert">
                 <div class="alert__content">
-                    <p class="alert-massage">{{ session('success')}}</p>
+                    <p class="alert-message">{{ session('success')}}</p>
                 </div>
             </div>
         @endif
         @if($errors->any())
             <div class="alert__danger">
                 <div class="alert__content">
-                    <p class="alert-massage">入力内容に誤りがあります</p>
+                    <p class="alert-message">入力内容に誤りがあります</p>
                 </div>
             </div>
         @endif

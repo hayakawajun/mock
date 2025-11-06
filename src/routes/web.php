@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/post',[CommentController::class,'store'])->name('comment.post');
 
     Route::get('/purchase/{item}',[PurchaseController::class,'order'])->name('item.order');
-    Route::post('/payment',[PurchaseController::class,'createCheckoutSession'])->name('item.payment');
+    Route::post('/payment',[PurchaseController::class,'payment'])->name('item.payment');
 
     Route::get('/purchase/address/create/{item}',[ShippingAddressController::class,'create'])->name('address.create');
     Route::post('/purchase/address/store/{item}',[ShippingAddressController::class,'store'])->name('address.store');

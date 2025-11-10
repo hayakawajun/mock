@@ -17,6 +17,11 @@ class ShippingAddressController extends Controller
         return view('shipping_address',compact('item','shippingAddress'));
     }
 
+    public function create(Item $item)
+    {
+        return view('shipping_address',compact('item'));
+    }
+
     public function update(AddressRequest $request, Item $item)
     {
         $address = $request->validated();

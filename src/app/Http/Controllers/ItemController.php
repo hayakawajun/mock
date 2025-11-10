@@ -8,6 +8,8 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Comment;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 
 class ItemController extends Controller
@@ -67,26 +69,40 @@ class ItemController extends Controller
         return view('detail',compact('item'));
     }
 
-    /* public function show(Item $item)　loadメソッド使用時のコード
+    public function create()
     {
-        $user = Auth::user();
-        $item->load([
-            'likers' => function ($query) use ($user){
-                if($user){
-                    $query->where('user_id',$user->id);
-                }
-            },
-            'categories',
-            'purchase',
-            'comments' => function ($query){
-                $query->with('user.profile');
-            }
-        ]);
+        $categories = Category::all();
 
-        $item->loadCount('likers','comments');
+        return view('exhibition',compact('categories'));
+    }
 
-        $item->liked_by_user = $user && $item->likers->isNotEmpty();
+    public function store(Request $request)
+    {
+        $exhibition = $request->only(['user_id','name','bland','description','status']);
 
-        return view('detail',compact('item'));
-    } */
+        $exhibition['price'] = str_replace(',','',$request->input('price'));
+
+        if($request->hasFile('image')){
+            $imageName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('item_image',$imageName,'public');
+            $exhibition['image'] = $path;
+        }
+
+        DB::beginTransaction();
+
+        try {
+            $item = Item::create($exhibition);
+            $categoryIds = $request->input('category_ids');
+            $item->categories()->sync($categoryIds);
+
+            DB::commit();
+
+            return redirect()->route('item.index')->with('success','商品を出品しました');
+
+        } catch(\Exception $e){
+            DB::rollBack();
+
+            return back()->withInput()->withErrors(['error' => '商品の出品に失敗しました']);
+        }
+    }
 }

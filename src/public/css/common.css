@@ -1,15 +1,22 @@
 /* ヘッダー */
 .header {
     background-color: black;
+    width: 100%;
 }
 
 .header__content {
-    max-width: 1540px;
+    width: 1400px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     margin: 0 auto;
     padding: 15px 0px;
+}
+
+@media screen and (max-width: 1400px) {
+    .header__content {
+        width: 100%;
+    }
 }
 
 .header-logo {
@@ -110,7 +117,7 @@ input::placeholder {
 }
 
 .alert__content {
-    max-width: 1540px;
+    width: 1400px;
     margin: 0 auto;
     text-align: center;
     padding: 10px 0;
@@ -130,28 +137,25 @@ input::placeholder {
 
 /* コンテンツ */
 .content {
-    text-align: center;
+    margin: 0 auto;
 }
 
 .content__heading {
     font-size: 28px;
     margin-top: 50px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
-/* 共通フォーム領域と 共通フォームアイテム */
+/* 認証、プロフィール設定、配送先住所変更、出品画面などで共通 */
 .form-field {
-    margin: 0 auto;
+    margin: 0 auto 100px;
     width: 500px;
-}
-
-.form__group {
-    text-align: left;
 }
 
 .input-label {
     display: block;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 5px;
@@ -172,33 +176,11 @@ input::placeholder {
     color: #ffffff;
     padding: 8px;
     font-size: 18px;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 40px;
-}
-
-/* 画像アップロードボタン */
-.upload__image-input::file-selector-button {
-    display: block;
-    margin-top: -20px;
-    visibility: hidden;
-}
-
-.upload__image-btn {
-    width: 150px;
-    display: block;
-    color: #ff574e;
-    padding: 8px 10px;
-    margin-top: 30px;
-    border: solid 1px #ff574e;
-    border-radius: 4px;
-    background-color: #ffffff;
-    cursor: pointer;
-}
-
-.upload__image-btn::after {
-    content: '画像を選択する';
 }
 
 /* ページリンク */
@@ -207,4 +189,5 @@ input::placeholder {
     display: block;
     text-decoration: none;
     margin-top: 20px;
+    text-align: center;
 }

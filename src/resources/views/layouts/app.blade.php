@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>coachtech</title>
+    <title>COACHTECH</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
@@ -29,7 +29,7 @@
                             @csrf
                             <button class="logout__btn">ログアウト</button>
                             <a class="header__nav-link" href="{{ route('profile.index') }}">マイページ</a>
-                            <a class="header__nav-link" href="">出品</a>
+                            <a class="header__nav-link" href="{{ route('item.create') }}">出品</a>
                         </form>
                     </nav>
                 @else

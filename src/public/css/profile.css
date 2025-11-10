@@ -18,3 +18,26 @@
     height: 100%;
     object-fit: cover;
 }
+
+/* 画像アップロードボタン */
+.upload__image-input::file-selector-button {
+    display: block;
+    margin-top: -20px;
+    visibility: hidden;
+}
+
+.upload__image-btn {
+    width: 150px;
+    display: block;
+    color: #ff574e;
+    padding: 8px 10px;
+    margin-top: 30px;
+    border: solid 1px #ff574e;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.upload__image-btn::after {
+    content: '画像を選択する';
+}

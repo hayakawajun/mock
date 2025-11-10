@@ -21,7 +21,7 @@ class ItemsTableSeeder extends Seeder
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
             'status' => 1,
             'price' => 15000,
-            'image' => 'image/Armani+Mens+Clock.jpg'
+            'image' => 'item_image/Armani+Mens+Clock.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -32,7 +32,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '高速で信頼性の高いハードディスク',
             'status' => 2,
             'price' => 5000,
-            'image' => 'image/HDD+Hard+Disk.jpg'
+            'image' => 'item_image/HDD+Hard+Disk.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -43,7 +43,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '新鮮な玉ねぎ3束のセット',
             'status' => 3,
             'price' => 300,
-            'image' => 'image/iLoveIMG+d.jpg'
+            'image' => 'item_image/iLoveIMG+d.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -53,7 +53,7 @@ class ItemsTableSeeder extends Seeder
             'description' => 'クラシックなデザインの革靴',
             'status' => 4,
             'price' => 4000,
-            'image' => 'image/Leather+Shoes+Product+Photo.jpg'
+            'image' => 'item_image/Leather+Shoes+Product+Photo.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -63,7 +63,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '高性能なモートパソコン',
             'status' => 1,
             'price' => 45000,
-            'image' => 'image/Living+Room+Laptop.jpg'
+            'image' => 'item_image/Living+Room+Laptop.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -74,7 +74,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '高音質のレコーディング用マイク',
             'status' => 2,
             'price' => 8000,
-            'image' => 'image/Music+Mic+4632231.jpg'
+            'image' => 'item_image/Music+Mic+4632231.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -84,7 +84,7 @@ class ItemsTableSeeder extends Seeder
             'description' => 'おしゃれなショルダーバッグ',
             'status' => 3,
             'price' => 3500,
-            'image' => 'image/Purse+fashion+pocket.jpg'
+            'image' => 'item_image/Purse+fashion+pocket.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -95,7 +95,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '使いやすいタンブラー',
             'status' => 4,
             'price' => 500,
-            'image' => 'image/Tumbler+souvenir.jpg'
+            'image' => 'item_image/Tumbler+souvenir.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -106,7 +106,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '手動のコーヒーミル',
             'status' => 1,
             'price' => 4000,
-            'image' => 'image/Waitress+with+Coffee+Grinder.jpg'
+            'image' => 'item_image/Waitress+with+Coffee+Grinder.jpg'
         ];
         DB::table('items')->insert($param);
 
@@ -116,7 +116,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '便利なメイクアップセット',
             'status' => 2,
             'price' => 2500,
-            'image' => 'image/外出メイクアップセット.jpg'
+            'image' => 'item_image/外出メイクアップセット.jpg'
         ];
         DB::table('items')->insert($param);
     }

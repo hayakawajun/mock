@@ -26,10 +26,13 @@ Route::middleware('auth')->group(function(){
     Route::get('/purchase/{item}',[PurchaseController::class,'order'])->name('item.order');
     Route::post('/payment',[PurchaseController::class,'payment'])->name('item.payment');
 
-    Route::get('/purchase/address/edit/{item}/{shippingAddress?}',[ShippingAddressController::class,'edit'])->name('address.edit');
+    Route::get('/purchase/address/edit/{item}/{shippingAddress}',[ShippingAddressController::class,'edit'])->name('address.edit');
+    Route::get('/purchase/address/create/{item}/',[ShippingAddressController::class,'create'])->name('address.create');
     Route::post('/purchase/address/update/{item}',[ShippingAddressController::class,'update'])->name('address.update');
     Route::get('/purchase/address/delete/{item}/{shippingAddress}',[ShippingAddressController::class,'destroy'])->name('address.delete');
 
+    Route::get('/sell',[ItemController::class,'create'])->name('item.create');
+    Route::post('/sell/exhibition',[ItemController::class,'store'])->name('item.store');
 
     Route::get('/payment/success', [PurchaseController::class, 'success'])->name('payment.success');
     Route::get('/payment/cancel', [PurchaseController::class, 'cancel'])->name('payment.cancel');

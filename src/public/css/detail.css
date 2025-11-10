@@ -1,5 +1,5 @@
 .split-content {
-    max-width: 1540px;
+    width: 1400px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;

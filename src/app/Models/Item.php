@@ -19,9 +19,10 @@ class Item extends Model
         'image'
     ];
 
-    public function categories()    //  複数のカテゴリーID取得用のリレーション。多対多
+    public function categories()    //  複数カテゴリーを保存するためのリレーション。多対多
     {
-        return $this->belongsToMany(Category::class,'item_category','item_id','category_id');
+        return $this->belongsToMany(Category::class,'item_category','item_id','category_id')
+                    ->withTimestamps();
     }
 
     public function likers()    //  いいねしているユーザーID取得用のリレーション。多対多

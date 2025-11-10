@@ -46,7 +46,7 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete($profile->image);
             }
             $imageName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('image',$imageName,'public');
+            $path = $request->file('image')->storeAs('profile_image',$imageName,'public');
             $profile->image = $path;
         }
 

@@ -9,7 +9,11 @@ use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Http\Requests\ExhibitionRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 
 class ItemController extends Controller
@@ -76,15 +80,25 @@ class ItemController extends Controller
         return view('exhibition',compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-        $exhibition = $request->only(['user_id','name','bland','description','status']);
-
-        $exhibition['price'] = str_replace(',','',$request->input('price'));
+        $exhibition = $request->only(['user_id','name','bland','description','status','price']);
 
         if($request->hasFile('image')){
-            $imageName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('item_image',$imageName,'public');
+            $imageFile = $request->file('image');
+            $directory = 'item_image';
+            $fileName = uniqid().'.jpg';
+            $path = $directory.'/'.$fileName;
+
+            $manager = new ImageManager(new Driver());
+
+            $image = $manager->read($imageFile->getRealPath());
+            $image->scale(width: 800);
+
+            $encodedImage = $image->toJpeg();
+
+            Storage::disk('public')->put($path,$encodedImage);
+
             $exhibition['image'] = $path;
         }
 

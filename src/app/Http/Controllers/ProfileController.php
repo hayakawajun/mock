@@ -9,6 +9,10 @@ use App\Models\Item;   //Itemモデルのインポート、いらないかも？
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 
 class ProfileController extends Controller
 {
@@ -45,8 +49,21 @@ class ProfileController extends Controller
             if($profile->image){
                 Storage::disk('public')->delete($profile->image);
             }
-            $imageName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('profile_image',$imageName,'public');
+
+            $imageFile = $request->file('image');
+            $directory = 'profile_image';
+            $fileName = uniqid().'.jpg';
+            $path = $directory.'/'.$fileName;
+
+            $manager = new ImageManager(new Driver());
+
+            $image = $manager->read($imageFile->getRealPath());
+            $image->scale(width: 200);
+
+            $encodedImage = $image->toJpeg();
+
+            Storage::disk('public')->put($path,$encodedImage);
+
             $profile->image = $path;
         }
 

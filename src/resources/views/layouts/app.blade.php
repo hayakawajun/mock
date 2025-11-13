@@ -50,7 +50,7 @@
             </div>
         @endif
         @if($errors->any())
-            <div class="alert__danger">
+            <div class="danger-alert">
                 <div class="alert__content">
                     <p class="alert-message">入力内容に誤りがあります</p>
                 </div>

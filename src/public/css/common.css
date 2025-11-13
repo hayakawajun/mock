@@ -13,12 +13,6 @@
     padding: 15px 0px;
 }
 
-@media screen and (max-width: 1400px) {
-    .header__content {
-        width: 100%;
-    }
-}
-
 .header-logo {
     margin-left: 50px;
     margin-right: auto;
@@ -98,16 +92,44 @@ input::placeholder {
 /* セッションメッセージ */
 .alert {
     background-color: rgb(81, 186, 207);
-    animation: fadeOut 1s ease-out 5s forwards;
-}
-
-.alert__danger {
-    background-color: rgb(199, 73, 90);
-    animation: fadeOut 1s ease-out 5s forwards;
+    animation: fadeOut 5s ease-out 0s forwards;
 }
 
 @keyframes fadeOut {
     0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.danger-alert {
+    background-color: rgb(199, 73, 90);
+    animation: shake 5s ease-out 0s forwards;
+}
+
+@keyframes shake {
+    0% {
+        height: 50px;
+    }
+    3% {
+        height: 40px;
+    }
+    5% {
+        height: 50px;
+    }
+    7% {
+        height: 40px;
+    }
+    9% {
+        height: 50px;
+    }
+    70% {
         opacity: 1;
     }
     100% {
@@ -149,7 +171,7 @@ input::placeholder {
 
 /* 認証、プロフィール設定、配送先住所変更、出品画面などで共通 */
 .form-field {
-    margin: 0 auto 100px;
+    margin: 0 auto;
     width: 500px;
 }
 
@@ -190,4 +212,9 @@ input::placeholder {
     text-decoration: none;
     margin-top: 20px;
     text-align: center;
+}
+
+/* コンテンツ最下部の余白 */
+.app {
+    margin-bottom: 100px;
 }

@@ -1,19 +1,38 @@
 .upload__item-image {
     width: 100%;
-    height: 120px;
     border: dotted 1px #9a9a9a;
     border-radius: 3px;
-}
-
-.upload__field {
+    padding: 20px;
     text-align: center;
 }
 
-.upload__item-image--input::file-selector-button {
-    display: inline-block;
-    margin-top: -20px;
-    margin-left: -45px;
-    visibility: hidden;
+.preview-container {
+    position: relative;
+    width: 400px;
+    padding-top: 400px;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    display: none;
+}
+
+.preview-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload__field {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.upload__item-image--input {
+    display: none;
 }
 
 .upload__item-image--btn {
@@ -21,15 +40,18 @@
     display: block;
     color: #ff574e;
     padding: 8px 10px;
-    margin: 40px auto 40px;
     border: solid 1px #ff574e;
     border-radius: 4px;
     background-color: #ffffff;
+    margin: 0 auto;
     cursor: pointer;
 }
 
-.upload__item-image--btn::after {
-    content: '画像を選択する';
+.file-name {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: none;
 }
 
 .content__sub-heading {

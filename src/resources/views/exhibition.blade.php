@@ -17,9 +17,13 @@
                 <p class="error-message">{{ $message }}</p>
             @enderror
             <div class="upload__item-image">
+                <div class="preview-container" id="preview-container">
+                    <img class="preview-image" id="preview-image" src="" alt="画像プレビュー">
+                </div>
+                <p class="file-name" id="file-name__display"></p>
                 <div class="upload__field">
-                    <label class="upload__item-image--btn" for="image"></label>
-                    <input class="upload__item-image--input" type="file" name="image" id="image">
+                    <label class="upload__item-image--btn" for="file-upload">画像を選択する</label>
+                    <input class="upload__item-image--input" type="file" name="image" id="file-upload" accept="image/*">
                 </div>
             </div>
         </div>
@@ -33,7 +37,11 @@
             @enderror
             <div class="item-categories">
                 @foreach($categories as $category)
-                    <input class="category-checkbox" type="checkbox" id="{{ $category->name }}" name="category_ids[]" value="{{ $category->id }}">
+                    <input class="category-checkbox" type="checkbox" id="{{ $category->name }}" name="category_ids[]" value="{{ $category->id }}"
+                    @if(is_array(old('category_ids')) && in_array($category->id, old('category_ids')))
+                        checked
+                    @endif
+                    >
                     <label class="category-label" for="{{ $category->name }}">{{ $category->name }}</label>
                 @endforeach
             </div>
@@ -45,11 +53,27 @@
                 <p class="error-message">{{ $message }}</p>
             @enderror
             <select class="status__select" name="status">
-                <option value="">選択してください</option>
-                <option value="1">良好</option>
-                <option value="2">目立った傷や汚れなし</option>
-                <option value="3">やや傷や汚れあり</option>
-                <option value="4">状態が悪い</option>
+                <option value="" disabled selected>選択してください</option>
+                <option value="1"
+                    @if(old('status') == "1")
+                            selected
+                    @endif
+                >良好</option>
+                <option value="2"
+                    @if(old('status') == "2")
+                            selected
+                    @endif
+                >目立った傷や汚れなし</option>
+                <option value="3"
+                    @if(old('status') == "3")
+                            selected
+                    @endif
+                >やや傷や汚れあり</option>
+                <option value="4"
+                    @if(old('status') == "4")
+                            selected
+                    @endif
+                >状態が悪い</option>
             </select>
         </div>
 
@@ -96,5 +120,6 @@
 
     </form>
 </div>
+<script src="{{ asset('js/upload_item.js') }}"></script>
 <script src="{{ asset('js/price.js') }}"></script>
 @endsection('content')

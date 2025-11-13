@@ -14,21 +14,17 @@
         <div class="form__group">
             <label class="input-label" for="email">メールアドレス</label>
             <input class="input-window" type="text" name="email" id="email" placeholder="例:test@example.com">
-            <p class="error-message">
-                @error('email')
-                {{ $message }}
-                @enderror
-            </p>
+            @error('email')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="form__group">
             <label class="input-label" for="password">パスワード</label>
             <input class="input-window" type="password" name="password" id="password">
-            <p class="error-message">
-                @error('password')
-                {{ $message }}
-                @enderror
-            </p>
+            @error('password')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
 
         <button class="submit-btn">ログインする</button>

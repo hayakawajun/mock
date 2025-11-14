@@ -27,7 +27,7 @@
                     @endif
                 </div>
             @endforeach
-            @if(request()->filled('keyword'))
+            @if(request()->filled('keywords'))
                 @if($items->isEmpty())
                     <h2>検索結果に該当する商品はありません。</h2>
                 @endif
@@ -49,7 +49,7 @@
                             @endif
                     </div>
                 @empty
-                    @if(request()->filled('keyword'))
+                    @if(request()->filled('keywords'))
                         <h2>検索した商品で「いいね」しているものはありません。</h2>
                     @else
                         <h2>「いいね」している商品はありません。</h2>

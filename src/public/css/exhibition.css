@@ -79,6 +79,7 @@
     border: solid 2px #ff574e;
     border-radius: 16px;
     text-align: center;
+    align-items: center;
     padding: 4px 10px;
     margin-left: 15px;
     cursor: pointer;

@@ -5,7 +5,7 @@
 }
 
 .header__content {
-    width: 1400px;
+    max-width: 1400px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
@@ -16,14 +16,12 @@
 .header-logo {
     margin-left: 50px;
     margin-right: auto;
+    padding-right: 30px;
 }
 
 .search__form {
     width: 500px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
+    text-align: center;
 }
 
 .search__form--input {
@@ -32,21 +30,10 @@
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 18px;
-    margin-left: 20px;
 }
 
 input::placeholder {
     color: #555555;
-}
-
-.search__form--btn {
-    padding: 9px 18px;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffffff;
-    margin-left: 10px;
-    cursor: pointer;
 }
 
 .header__nav {
@@ -217,4 +204,9 @@ input::placeholder {
 /* コンテンツ最下部の余白 */
 .app {
     margin-bottom: 100px;
+}
+
+/* Safariのデフォルトフォントをサンセリフ体に変更 */
+* {
+    font-family: sans-serif;
 }

@@ -45,10 +45,19 @@ class Item extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function scopeItemSearch($query,$keyword)
+    public function scopeItemSearch($query,$keywords)
     {
-        if(!empty($keyword)){
-            $query->where('name','like','%'.$keyword.'%');
+        if(!$keywords){
+            return $query;
         }
+
+        $keywords = trim($keywords);
+        $keyword_array = preg_split('/[\\s]+/u',$keywords, -1, PREG_SPLIT_NO_EMPTY);
+
+        foreach($keyword_array as $keyword){
+            $query->where('name','LIKE',"%{$keyword}%");
+        }
+
+        return $query;
     }
 }

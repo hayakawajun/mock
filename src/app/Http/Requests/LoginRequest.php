@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
 
 class LoginRequest extends FortifyLoginRequest
 {
@@ -21,11 +24,34 @@ class LoginRequest extends FortifyLoginRequest
      *
      * @return array
      */
-    public function rules()
+/*    public function rules()
     {
         return [
             'email' => 'required | string | email | max:255',
             'password' => 'required | string | min:8 | max:255'
+        ];
+    }
+*/
+    public function rules()
+    {
+        return [
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:255',
+                function($attribute,$value,$fail){
+                    if(!Auth::attempt(['email' => $this->email, 'password' => $value])){
+                        $fail('入力したメールアドレスとパスワードが一致していません');
+                    }
+                },
+            ]
         ];
     }
 

@@ -13,34 +13,34 @@
 
         <div class="form__group">
             <label class="input-label" for="name">ユーザー名</label>
-            <input class="input-window" type="text" name="name" id="name" value="{{ old('name') }}">
             @error('name')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="text" name="name" id="name" value="{{ old('name') }}">
         </div>
 
         <div class="form__group">
             <label class="input-label" for="email">メールアドレス</label>
-            <input class="input-window" type="text" name="email" id="email" value="{{ old('email') }}">
             @error('email')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="text" name="email" id="email" value="{{ old('email') }}">
         </div>
 
         <div class="form__group">
             <label class="input-label" for="password">パスワード</label>
-            <input class="input-window" type="password" name="password" id="password" required autocomplete="new-password">
             @error('password')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="password" name="password" id="password" autocomplete="new-password">
         </div>
 
         <div class="form__group">
             <label class="input-label" for="password_confirmation">確認用パスワード</label>
-            <input class="input-window" type="password" name="password_confirmation" id="password_confirmation" required autocomplete="new-password">
             @error('password_confirmation')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
         </div>
 
         <button class="submit-btn">登録する</button>

@@ -36,19 +36,21 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
+        $keywords = $request->keywords;
+
         if(Auth::check()){
             $user = Auth::user();
             $items = Item::where('user_id','!=',$user->id)
-                ->ItemSearch($request->keyword)->with('purchase')->get();
+                ->ItemSearch($keywords)->with('purchase')->get();
             $likes = $user->likedItems()
-                ->ItemSearch($request->keyword)->with('purchase')->get();
+                ->ItemSearch($keywords)->with('purchase')->get();
 
-                return view('index',compact('items','likes'));
+                return view('index',compact('items','likes','keywords'));
 
         }else{
-            $items = Item::with('purchase')->ItemSearch($request->keyword)->get();
+            $items = Item::with('purchase')->ItemSearch($keywords)->get();
 
-            return view('index',compact('items'));
+            return view('index',compact('items','keywords'));
         }
     }
 

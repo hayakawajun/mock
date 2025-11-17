@@ -201,12 +201,12 @@ input::placeholder {
     text-align: center;
 }
 
-/* コンテンツ最下部の余白 */
+/* コンテンツ最下部に余白を持たせる */
 .app {
     margin-bottom: 100px;
 }
 
-/* Safariのデフォルトフォントをサンセリフ体に変更 */
+/* Safariのデフォルトフォントをサンセリフ体に変更するために調整 */
 * {
     font-family: sans-serif;
 }

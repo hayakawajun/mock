@@ -53,7 +53,11 @@
         @if($errors->any())
             <div class="danger-alert">
                 <div class="alert__content">
-                    <p class="alert-message">入力内容に誤りがあります</p>
+                    @if($errors->has('sold'))
+                        <p class="alert-message">{{ $errors->first('sold') }}</p>
+                    @else
+                        <p class="alert-message">入力内容に誤りがあります</p>
+                    @endif
                 </div>
             </div>
         @endif

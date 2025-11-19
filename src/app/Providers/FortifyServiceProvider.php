@@ -10,52 +10,27 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 use App\Http\Responses\CustomRegisterResponse;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use App\Http\Responses\CustomLoginResponse;
+use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
+use App\Http\Responses\CustomLogoutResponse;
+use Laravel\Fortify\Contracts\VerifyEmailResponse as VerifyEmailResponseContract;
+use App\Http\Responses\CustomVerifyEmailResponse;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Http\Requests\LoginRequest;
-
+use Illuminate\Auth\Events\Lockout;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    /**
-     * ログアウト後の遷移先をログイン画面に指定。
-     */
     public function register(): void
     {
-        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
-            public function toResponse($request)
-            {
-                return redirect('/login');
-            }
-        });
-
-    /**
-     * 新規登録後の遷移先をプロフィール編集画面に指定。作成したCustomRegisterResponse.phpをバインド。
-     */
-
-        $this->app->singleton(
-        RegisterResponseContract::class,
-        CustomRegisterResponse::class
-        );
-
-    /**
-     * ログイン後の遷移先を商品一覧画面に指定。作成したCustomLoginResponse.phpをバインド。
-     */
-
-        $this->app->singleton(
-        LoginResponseContract::class,
-        CustomLoginResponse::class
-        );
-
+        //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
@@ -74,9 +49,43 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
-        /**
-         * FortifyLoginRequestが呼び出されたら、カスタムフォームリクエストを呼び出すよう、 LoginRequestをバインド。
-         */
         $this->app->bind(FortifyLoginRequest::class,LoginRequest::class);
+
+        Fortify::verifyEmailView( function (){
+            return view('auth.verify_email');
+        });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+
+                if (!$user->hasVerifiedEmail()) {
+                    return null;
+                }
+
+                return $user;
+            }
+        });
+
+        $this->app->singleton(
+            RegisterResponseContract::class,
+            CustomRegisterResponse::class
+        );
+
+        $this->app->singleton(
+            LoginResponseContract::class,
+            CustomLoginResponse::class
+        );
+
+        $this->app->singleton(
+            LogoutResponseContract::class,
+            CustomLogoutResponse::class
+        );
+
+        $this->app->singleton(
+            VerifyEmailResponseContract::class,
+            CustomVerifyEmailResponse::class
+        );
     }
 }

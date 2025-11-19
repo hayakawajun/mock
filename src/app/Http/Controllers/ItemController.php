@@ -20,6 +20,11 @@ class ItemController extends Controller
 {
     public function index()
     {
+        /* 会員登録後にメール認証を行わないまま、URLの直接入力でページを開こうとした場合の対応 */
+        if (Auth::check() && !Auth::user()->hasVerifiedEmail()) {
+            return redirect()->route('verification.notice');
+        }
+
         if(Auth::check()){
             $user = Auth::user();
             $items = Item::where('user_id','!=',$user->id)->with('purchase')->get();
@@ -36,6 +41,11 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
+        /* 会員登録後にメール認証を行わないまま、URLの直接入力でページを開こうとした場合の対応 */
+        if (Auth::check() && !Auth::user()->hasVerifiedEmail()) {
+            return redirect()->route('verification.notice');
+        }
+
         $keywords = $request->keywords;
 
         if(Auth::check()){
@@ -56,6 +66,11 @@ class ItemController extends Controller
 
     public function show($id)
     {
+        /* 会員登録後にメール認証を行わないまま、URLの直接入力でページを開こうとした場合の対応 */
+        if (Auth::check() && !Auth::user()->hasVerifiedEmail()) {
+            return redirect()->route('verification.notice');
+        }
+
         $user = Auth::user();
         $item = Item::withExists(['likers as liked_by_user' => function ($query) use ($user){
             if($user){

@@ -52,9 +52,7 @@
             @if($item->purchase)
                 <p class="sold-out">SOLD</p>
             @else
-                @auth
-                    <a class="purchase__btn" href="{{ route('item.order',$item->id) }}">購入手続きへ</a>
-                @endauth
+                <a class="purchase__btn" href="{{ route('item.order',$item->id) }}">購入手続きへ</a>
             @endif
         </div>
 
@@ -113,18 +111,16 @@
             @endforelse
         </div>
 
-        @auth
-            <form class="post-comment__form" action="{{ route('comment.post') }}" method="post">
-                @csrf
-                <label for="post-comment">商品へのコメント</label>
-                @error('text')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-                <textarea class="post-comment" name="text" id="post-comment"></textarea>
-                <button class="submit-btn">コメントを送信する</button>
-                <input type="hidden" name="item_id" value="{{ $item->id }}">
-            </form>
-        @endauth
+        <form class="post-comment__form" action="{{ route('comment.post') }}" method="post">
+            @csrf
+            <label for="post-comment">商品へのコメント</label>
+            @error('text')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
+            <textarea class="post-comment" name="text" id="post-comment"></textarea>
+            <button class="submit-btn">コメントを送信する</button>
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
+        </form>
 
     </div>
 

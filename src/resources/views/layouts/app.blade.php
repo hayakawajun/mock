@@ -61,6 +61,13 @@
                 </div>
             </div>
         @endif
+        @if(Session::has('error'))
+            <div class="danger-alert">
+                <div class="alert__content">
+                    <p class="alert-message">{{ Session::get('error') }}</p>
+                </div>
+            </div>
+        @endif
 
         @yield('content')
 

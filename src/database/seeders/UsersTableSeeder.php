@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         $param = [
             'name' => 'ダミ男',
             'email' => 'dummy1@test.com',
+            'email_verified_at' => '2025-01-01 00:00:01',
             'password' => Hash::make('dummypass')
         ];
         DB::table('users')->insert($param);
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
         $param = [
             'name' => 'ダミ子',
             'email' => 'dummy2@test.com',
+            'email_verified_at' => '2025-01-01 00:00:02',
             'password' => Hash::make('dummypass')
         ];
         DB::table('users')->insert($param);

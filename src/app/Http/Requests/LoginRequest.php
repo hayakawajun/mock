@@ -48,7 +48,7 @@ class LoginRequest extends FortifyLoginRequest
                 'max:255',
                 function($attribute,$value,$fail){
                     if(!Auth::attempt(['email' => $this->email, 'password' => $value])){
-                        $fail('入力したメールアドレスとパスワードが一致していません');
+                        $fail('ログイン情報が登録されていません');
                     }
                 },
             ]
@@ -58,11 +58,11 @@ class LoginRequest extends FortifyLoginRequest
     public function messages()
     {
         return [
-            'email.required' => 'メールアドレスは必ず入力してください',
+            'email.required' => 'メールアドレスを入力してください',
             'email.string' => 'メールアドレスは文字列で入力してください',
             'email.email' => 'メールアドレスの形式で入力してください',
             'email.max' => 'メールアドレスは255文字以内で入力してください',
-            'password.required' => 'パスワードは必ず入力してください',
+            'password.required' => 'パスワードを入力してください',
             'password.string' => 'パスワードは文字列で入力してください',
             'password.min' => 'パスワードは8文字以上で入力してください',
             'password.max' => 'パスワードは255文字以内で入力してください',

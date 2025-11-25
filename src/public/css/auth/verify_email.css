@@ -46,3 +46,8 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+/* Safariのデフォルトフォントをサンセリフ体に変更するために調整 */
+* {
+    font-family: sans-serif;
+}

@@ -78,26 +78,31 @@ input::placeholder {
 
 /* セッションメッセージ */
 .alert {
-    background-color: rgb(81, 186, 207);
-    animation: fadeOut 5s ease-out 0s forwards;
+    background-color: rgb(81, 190, 207);
+    animation: fadeOut 4s ease-out 0s forwards;
 }
 
 @keyframes fadeOut {
     0% {
         opacity: 1;
     }
-    50% {
+    70% {
         opacity: 1;
     }
+    90% {
+        opacity: 0.6;
+        letter-spacing: 0em;
+    }
     100% {
+        letter-spacing: 2px;
         opacity: 0;
         visibility: hidden;
     }
 }
 
 .danger-alert {
-    background-color: rgb(199, 73, 90);
-    animation: shake 5s ease-out 0s forwards;
+    background-color: rgb(227, 74, 97);
+    animation: shake 4s ease-out 0s forwards;
 }
 
 @keyframes shake {
@@ -116,7 +121,7 @@ input::placeholder {
     9% {
         height: 50px;
     }
-    70% {
+    80% {
         opacity: 1;
     }
     100% {

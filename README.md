@@ -3,7 +3,8 @@
 ## 環境構築
 
 ### Dockerビルド
-1. GitHubからクローン
+
+1. GitHubからクローン。
 ``` bash
 git clone git@github.com:hayakawajun/mock.git
 ```
@@ -15,13 +16,14 @@ docker-compose up -d --build
 ※ MySQLはOSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlファイルを編集してください。
 
 ### Laravel環境構築
+
 1. PHPコンテナ内に移動。
 ``` bash
 docker-compose exec php bash
 ```
 2. パッケージのインストール。
 ``` bash
-composer install`
+composer install
 ```
 3. 「.env.example」ファイルから「.env」ファイルを作成。
 4. 作成した「.env」ファイルに以下の環境変数を設定。
@@ -49,27 +51,42 @@ MAIL_FROM_NAME="${APP_NAME}"
 - 下記はStripeのテスト決済画面への接続に関する設定です。  
 ファイル内に項目を追加の上、設定してください。
 ``` text
-STRIPE_KEY="[あなたのテスト公開可能キーをここに記述]"
-STRIPE_SECRET="[あなたのテストシークレットキーをここに記述]"
+STRIPE_KEY="あなたのテスト公開可能キーをここに記述"
+STRIPE_SECRET="あなたのテストシークレットキーをここに記述"
 ```
-> *キーの値は、Stripeのテスト用サンドボックス画面に入り、[開発者]アイコンから[APIキー]押下で遷移後、テスト用のAPIキーをコピーして上記項目に貼り付けてください。*
+> *キーの値は、Stripeのテスト用サンドボックス画面に入り、[開発者]アイコンから[APIキー]押下で遷移後、テスト用のAPIキーをそれぞれコピーして上記項目に貼り付けてください。*
 
-5. アプリケーションキーの作成
+5. アプリケーションキーの作成。
 ``` bash
 php artisan key:generate
 ```
 
-6. マイグレーションの実行
+6. 最新の「.env」ファイルの設定を有効にするためコマンドを実行。
+``` bash
+php artisan config:clear
+```
+
+7. マイグレーションの実行。
 ``` bash
 php artisan migrate
 ```
-
-7. キャッシュ
 
 8. シーディングの実行
 ``` bash
 php artisan db:seed
 ```
 
+## 使用技術(実行環境)
+
+- PHP 8.2.29
+- Laravel 8.83.29
+- MySQL 8.0.26
+
 ## ER図
+
 ![alt](ER_graph.png)
+
+## URL
+- 開発環境：http://localhost/
+- phpMyAdmin：http://localhost:8080/
+- mailhog：http://localhost:8025/

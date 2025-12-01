@@ -53,7 +53,8 @@ class MyListTest extends TestCase
         $response = $this->actingAs($myself)->get('/');
         $response->assertStatus(200);
 
-        $response->assertViewHas('likes', function ($viewLikes) use ($favoriteItem, $notFavoriteItem){
+        $response->assertViewHas('likes', function ($viewLikes) use ($favoriteItem, $notFavoriteItem)
+        {
             $this->assertNotNull($viewLikes->find($favoriteItem->id));
             $this->assertNull($viewLikes->find($notFavoriteItem->id));
 
@@ -114,11 +115,12 @@ class MyListTest extends TestCase
         $response = $this->actingAs($myself)->get('/');
         $response->assertStatus(200);
 
-        $response->assertViewHas('likes', function ($viewLikes) use ($soldFavoriteItem, $onSaleNotFavoriteItem){
+        $response->assertViewHas('likes', function ($viewLikes) use ($soldFavoriteItem, $onSaleNotFavoriteItem)
+        {
             $favoriteItemInView = $viewLikes->find($soldFavoriteItem->id);
+
             $this->assertNotNull($favoriteItemInView);
             $this->assertNotNull($favoriteItemInView->purchase);
-
             $this->assertNull($viewLikes->find($onSaleNotFavoriteItem->id));
 
             return true;

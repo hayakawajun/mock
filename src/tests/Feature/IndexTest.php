@@ -54,7 +54,8 @@ class IndexTest extends TestCase
 
         $response->assertViewIs('index');
 
-        $response->assertViewHas('items', function ($viewItems) use ($items){
+        $response->assertViewHas('items', function ($viewItems) use ($items)
+        {
             return  $viewItems->count() === $items->count() &&
                     $viewItems->first()->name === $items->first()->name;
         });
@@ -95,11 +96,14 @@ class IndexTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
 
-        $response->assertViewHas('items', function ($viewItems) use ($soldItem, $onSaleItem){
+        $response->assertViewHas('items', function ($viewItems) use ($soldItem, $onSaleItem)
+        {
             $soldItemInView = $viewItems->find($soldItem->id);
+
             $this->assertNotNull($soldItemInView->purchase);
 
             $onSaleItemInView = $viewItems->find($onSaleItem->id);
+
             $this->assertNull($onSaleItemInView->purchase);
 
             return true;
@@ -142,11 +146,18 @@ class IndexTest extends TestCase
         $response->assertDontSee('自分のアイテム');
         $response->assertSee('他者のアイテム');
 
-        $response->assertViewHas('items', function ($viewItems) use ($myItem, $othersItem){
+        $response->assertViewHas('items', function ($viewItems) use ($myItem, $othersItem)
+        {
             $this->assertNull($viewItems->find($myItem->id));
             $this->assertNotNull($viewItems->find($othersItem->id));
 
             return true;
         });
+
+        $response->assertSeeInOrder([
+            '<span class="sold">',
+            'SOLD',
+            '</span>'
+        ], false);
     }
 }

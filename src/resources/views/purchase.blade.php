@@ -148,7 +148,7 @@
             </tr>
             <tr class="payment-information__detail">
                 <td class="payment-information__detail-title">支払い方法</td>
-                <td><span id="payment__display-area">未選択</span></td>
+                <td><span id="payment__display-area">{{ old('payment','未選択')}}</span></td>
             </tr>
         </table>
         <button class="purchase__btn" type="submit">購入する</button>

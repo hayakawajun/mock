@@ -60,7 +60,7 @@ class DetailTest extends TestCase
             'text' => 'とても便利な商品です'
         ]);
 
-        $response = $this->get("/item/{$dummyItem->id}");
+        $response = $this->get(route('item.show',$dummyItem->id));
         $response->assertStatus(200);
 
         $response->assertViewIs('detail');
@@ -73,7 +73,8 @@ class DetailTest extends TestCase
         $response->assertSee('9,999');
         $response->assertSee('item_image/dummy_item.jpg', false);
 
-        $response->assertViewHas('item', function ($viewItem) {
+        $response->assertViewHas('item', function ($viewItem)
+        {
             $this->assertEquals(2, $viewItem->likers()->count());
 
             return true;
@@ -120,7 +121,7 @@ class DetailTest extends TestCase
         $categoryIds = [$category2->id,$category3->id];
         $dummyItem->categories()->sync($categoryIds);
 
-        $response = $this->get("/item/{$dummyItem->id}");
+        $response = $this->get(route('item.show',$dummyItem->id));
         $response->assertStatus(200);
 
         $response->assertViewIs('detail');

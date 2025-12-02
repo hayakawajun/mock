@@ -99,7 +99,8 @@ class ItemController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
-        $exhibition = $request->only(['user_id','name','bland','description','status','price']);
+        $exhibition = $request->only(['name','bland','description','status','price']);
+        $exhibition['user_id'] = Auth::id();
 
         if($request->hasFile('image')){
             $imageFile = $request->file('image');

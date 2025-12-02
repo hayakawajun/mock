@@ -63,7 +63,7 @@ class IndexTest extends TestCase
 
     // 購入済み商品は「sold」と表示される。
 
-    public function test_index_sold_out_item()
+    public function test_index_sold_out_label()
     {
         $seller = User::factory()->create();
         $buyer = User::factory()->create();

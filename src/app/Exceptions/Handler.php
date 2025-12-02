@@ -37,5 +37,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (TokenMismatchException $e, $request){
+            return Redirect::route('login')->with('error','セッションの有効期限が切れました　ログインし直してください');
+        });
     }
 }

@@ -82,6 +82,11 @@ php artisan db:seed
 - Laravel 8.83.29
 - MySQL 8.0.26
 
+## 使用技術(フロントエンド)
+
+- HTML/CSS
+- JavaScript (一部ビューファイルで、入力値を即時反映するなどの理由で使用しています。)
+
 ## ER図
 
 ![alt](ER_graph.png)

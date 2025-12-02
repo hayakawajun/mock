@@ -114,7 +114,6 @@
             </div>
         </div>
 
-        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <input type="hidden" name="price" id="price_actual">
         <button class="submit-btn">出品する</button>
 

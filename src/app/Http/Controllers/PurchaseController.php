@@ -10,7 +10,6 @@ use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\DB;
-
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
@@ -28,7 +27,7 @@ class PurchaseController extends Controller
 
     public function payment(PurchaseRequest $request)
     {
-        /* Stripe決済画面からブラウザの戻るボタンで戻った後に商品の購入をできなくしています。 */
+        /* Stripe決済画面からブラウザの戻るボタンで戻った場合、商品の購入をできなくしています。 */
 
         if(Purchase::where('item_id',$request->item_id)->exists()){
             $item = Item::find($request->item_id);

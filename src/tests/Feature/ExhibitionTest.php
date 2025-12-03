@@ -20,6 +20,12 @@ class ExhibitionTest extends TestCase
      * @return void
      */
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        Storage::fake();
+    }
+
     // テスト項目15：出品商品情報登録
 
     // 商品出品画面にて必要な情報が保存できること。(カテゴリ、商品の状態、商品名、ブランド名、商品の説明、販売価格)

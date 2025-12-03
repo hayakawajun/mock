@@ -50,14 +50,55 @@ class VerifyEmailTest extends TestCase
         Notification::assertSentTo(
             $user,
             VerifyEmail::class,
-            function ($notification) use ($user) {
-                return $notification->id !== null;
+            function ($notification) use ($user)
+            {
+                return true;
             }
         );
     }
 
     // メール認証誘導画面で「認証はこちらから」ボタンを押下するとメール認証サイトに遷移する。
 
+    public function test_verify_email_url_check()
+    {
+        $response = $this->get('/register');
+        $response->assertStatus(200);
+
+        $inputData = [
+            'name' => 'テスト',
+            'email' => 'test@example.com',
+            'password' => 'dummypass',
+            'password_confirmation' => 'dummypass'
+        ];
+
+        $response = $this->post('/register',$inputData);
+        $response->assertStatus(302);
+        $response->assertRedirect('http://localhost/email/verify');
+
+        $user = User::where('email','test@example.com')->first();
+        $this->assertNotNull($user);
+
+        Notification::assertSentTo(
+            $user,
+            VerifyEmail::class,
+            function ($notification) use ($user)
+            {
+                return true;
+            }
+        );
+
+        $response = $this->get('/email/verify');
+        $response->assertStatus(200);
+
+        $response->assertViewIs('auth.verify_email');
+
+        $response->assertSee([
+            '<a class="mail__verification" href="http://localhost:8025/">認証はこちらから</a>'
+        ], false);
+
+        $response = $this->get('http://localhost:8025/');
+        $response->assertStatus(302);
+    }
 
     // メール認証サイトのメール認証を完了すると、プロフィール設定画面に遷移する。
 

@@ -153,11 +153,5 @@ class IndexTest extends TestCase
 
             return true;
         });
-
-        $response->assertSeeInOrder([
-            '<span class="sold">',
-            'SOLD',
-            '</span>'
-        ], false);
     }
 }

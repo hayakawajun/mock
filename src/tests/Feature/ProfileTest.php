@@ -40,8 +40,9 @@ class ProfileTest extends TestCase
 
         $response->assertViewHas('profile', function ($viewProfile) use ($myself,$myProfile)
         {
-            $this->assertNotNull($viewProfile->find($myself->id));
-            $this->assertNotNull($viewProfile->find($myProfile->id));
+            $this->assertInstanceOf('App\Models\Profile',$viewProfile);
+            $this->assertEquals($myProfile->id, $viewProfile->id);
+            $this->assertEquals($myself->id, $viewProfile->user_id);
 
             return true;
         });

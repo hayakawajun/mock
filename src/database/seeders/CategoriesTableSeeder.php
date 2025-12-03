@@ -15,7 +15,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = [
+        $params = [
             'ファッション',
             '家電',
             'インテリア',
@@ -32,9 +32,9 @@ class CategoriesTableSeeder extends Seeder
             'ベビー・キッズ'
         ];
 
-        foreach ($names as $name) {
+        foreach ($params as $param) {
             DB::table('categories')->insert([
-                'name' => $name
+                'name' => $param
             ]);
         }
     }

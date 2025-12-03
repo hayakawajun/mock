@@ -15,46 +15,33 @@ class LikesTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'user_id' => 1,
-            'item_id' => 6
+        $params = [
+            [
+                'user_id' => 1,
+                'item_id' => 6
+            ],
+            [
+                'user_id' => 1,
+                'item_id' => 7
+            ],
+            [
+                'user_id' => 1,
+                'item_id' => 8
+            ],
+            [
+                'user_id' => 2,
+                'item_id' => 1
+            ],
+            [
+                'user_id' => 2,
+                'item_id' => 2
+            ],
+            [
+                'user_id' => 2,
+                'item_id' => 3
+            ]
         ];
 
-        DB::table('likes')->insert($param);
-
-        $param = [
-            'user_id' => 1,
-            'item_id' => 7
-        ];
-
-        DB::table('likes')->insert($param);
-
-        $param = [
-            'user_id' => 1,
-            'item_id' => 8
-        ];
-
-        DB::table('likes')->insert($param);
-
-        $param = [
-            'user_id' => 2,
-            'item_id' => 1
-        ];
-
-        DB::table('likes')->insert($param);
-
-        $param = [
-            'user_id' => 2,
-            'item_id' => 2
-        ];
-
-        DB::table('likes')->insert($param);
-
-        $param = [
-            'user_id' => 2,
-            'item_id' => 3
-        ];
-
-        DB::table('likes')->insert($param);
+        DB::table('likes')->insert($params);
     }
 }

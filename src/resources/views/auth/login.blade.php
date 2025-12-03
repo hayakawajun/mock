@@ -16,7 +16,7 @@
             @error('email')
                 <p class="error-message">{{ $message }}</p>
             @enderror
-            <input class="input-window" type="text" name="email" id="email" placeholder="例:test@example.com">
+            <input class="input-window" type="text" name="email" id="email">
         </div>
 
         <div class="form__group">

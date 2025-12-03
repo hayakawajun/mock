@@ -26,6 +26,10 @@ docker-compose exec php bash
 composer install
 ```
 3. 「.env.example」ファイルをコピーして「.env」ファイルを作成。
+``` bash
+cp .env.example .env
+```
+
 4. 作成した「.env」ファイルに以下の環境変数を設定。
 
 - データベースに関する設定
@@ -54,7 +58,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 STRIPE_KEY="あなたのテスト公開可能キーをここに記述"
 STRIPE_SECRET="あなたのテストシークレットキーをここに記述"
 ```
-> *キーの値は、Stripeのテスト用サンドボックス画面に入り、[開発者]アイコンから[APIキー]押下で遷移後、テスト用のAPIキーをそれぞれコピーして上記項目に貼り付けてください。*
+> *Stripeキーについて：キーの値はStripeのテスト用サンドボックス画面に入り、[開発者]アイコンから[APIキー]押下で遷移後、テスト用のAPIキーをそれぞれコピーして上記項目に貼り付けてください。*
 
 5. アプリケーションキーの作成。
 ``` bash
@@ -66,15 +70,22 @@ php artisan key:generate
 php artisan config:clear
 ```
 
-7. マイグレーションの実行。
+7. 画像ファイルの保存先をstorageディレクトリにするためストレージリンクを作成。
+``` bash
+php artisan storage:link
+```
+
+8. マイグレーションの実行。
 ``` bash
 php artisan migrate
 ```
 
-8. シーディングの実行
+9. シーディングの実行
 ``` bash
 php artisan db:seed
 ```
+> *シーディングファイルについて：商品のダミーデータを作成するにあたり、出品したダミーユーザーも2名作成しています。また、そのユーザーのプロフィール、コメント、いいね、購入情報のシーディングファイルも設定していますが、機能の検証に邪魔な場合は「DatabaseSeeder.php」ファイル内の「ProfilesTableSeeder」「CommentsTableSeeder」「LikesTableSeeder」「PurchasesTableSeeder」のそれぞれのクラスをコメントアウトして下さい。またこのREADME.mdと同階層にダミーデータの簡単な相関図を配置しましたので、*
+
 
 ## phpunitを使用したテストについて
 
@@ -84,7 +95,12 @@ php artisan db:seed
 ``` bash
 docker-compose exec php bash
 ```
+
 2. 「.env.example」ファイルをコピーして「.env.testing」ファイルを作成。
+``` bash
+cp .env.example .env.testing
+```
+
 3. 作成した「.env.testing」ファイルに以下の環境変数を設定。
 
 - アプリケーションに関する設定
@@ -115,6 +131,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=test@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 ```
+
 4. テスト用のアプリケーションキーの作成。
 ``` bash
 php artisan key:generate —-env=testing
@@ -129,6 +146,7 @@ php artisan config:clear
 ``` bash
 php artisan migrate —-env=testing
 ```
+
 ### テストファイルについて
 tests/Feature ディレクトリ以下に,
 テスト項目に合わせて 16 のテストファイルを作成しています。  
@@ -139,6 +157,7 @@ tests/Feature ディレクトリ以下に,
 - PHP 8.2.29
 - Laravel 8.83.29
 - MySQL 8.0.26
+- nginx 1.21.1
 
 ## 使用技術(フロントエンド)
 
@@ -149,7 +168,8 @@ tests/Feature ディレクトリ以下に,
 
 ![alt](ER_graph.png)
 
-## URL
-- 開発環境：http://localhost/
+## 開発環境(URL)
+- トップページ：http://localhost/
+- ユーザー登録：http://localhost/register
 - phpMyAdmin：http://localhost:8080/
 - mailhog：http://localhost:8025/

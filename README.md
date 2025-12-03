@@ -25,7 +25,7 @@ docker-compose exec php bash
 ``` bash
 composer install
 ```
-3. 「.env.example」ファイルから「.env」ファイルを作成。
+3. 「.env.example」ファイルをコピーして「.env」ファイルを作成。
 4. 作成した「.env」ファイルに以下の環境変数を設定。
 
 - データベースに関する設定
@@ -75,6 +75,64 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
+
+## phpunitを使用したテストについて
+
+### テスト環境構築
+
+1. PHPコンテナ内に移動。
+``` bash
+docker-compose exec php bash
+```
+2. 「.env.example」ファイルをコピーして「.env.testing」ファイルを作成。
+3. 作成した「.env.testing」ファイルに以下の環境変数を設定。
+
+- アプリケーションに関する設定
+``` text
+APP_NAME=Laravel
+APP_ENV=test
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+```
+- データベースに関する設定
+``` text
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=demo_test
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+- mailhogによるメール認証テストに関する設定
+``` text
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=test@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+4. テスト用のアプリケーションキーの作成。
+``` bash
+php artisan key:generate —-env=testing
+```
+
+6. 最新の「.env.testing」ファイルの設定を有効にするためコマンドを実行。
+``` bash
+php artisan config:clear
+```
+
+7. テスト用のテーブルを作成。
+``` bash
+php artisan migrate —-env=testing
+```
+### テストファイルについて
+tests/Feature ディレクトリ以下に,
+テスト項目に合わせて 16 のテストファイルを作成しています。  
+それぞれのファイル内に、テスト内容をコメントアウトしていますのでご参照ください。
 
 ## 使用技術(実行環境)
 

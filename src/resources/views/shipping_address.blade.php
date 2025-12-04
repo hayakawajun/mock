@@ -17,26 +17,26 @@
 
         <div class="form__group">
             <label class="input-label" for="postal_code">郵便番号</label>
-            <input class="input-window" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code',$shippingAddress->postal_code ?? '') }}">
             @error('postal_code')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code',$shippingAddress->postal_code ?? '') }}">
         </div>
 
         <div class="form__group">
             <label class="input-label" for="address">住所</label>
-            <input class="input-window" type="text" name="address" id="address" value="{{ old('address',$shippingAddress->address ?? '') }}">
             @error('address')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="text" name="address" id="address" value="{{ old('address',$shippingAddress->address ?? '') }}">
         </div>
 
         <div class="form__group">
             <label class="input-label" for="building">建物名</label>
-            <input class="input-window" type="text" name="building" id="building" value="{{ old('building',$shippingAddress->building ?? '') }}">
             @error('building')
                 <p class="error-message">{{ $message }}</p>
             @enderror
+            <input class="input-window" type="text" name="building" id="building" value="{{ old('building',$shippingAddress->building ?? '') }}">
         </div>
 
         <button class="submit-btn">

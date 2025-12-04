@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class,
-            ProfilesTableSeeder::class,
             ItemsTableSeeder::class,
             CategoriesTableSeeder::class,
             ItemCategoryTableSeeder::class,
+            ProfilesTableSeeder::class,
             CommentsTableSeeder::class,
             LikesTableSeeder::class,
             PurchasesTableSeeder::class

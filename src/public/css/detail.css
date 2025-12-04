@@ -37,7 +37,9 @@
 /* 商品詳細 */
 .item-name {
     font-size: 28px;
-    line-height: 0px;
+    overflow-wrap: break-word;
+    margin-top: 0px;
+    margin-bottom: -10px;
 }
 
 .item-bland {

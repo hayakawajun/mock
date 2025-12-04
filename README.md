@@ -84,7 +84,7 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
-> *シーディングファイルについて：商品のダミーデータを作成するにあたり、ダミー商品を出品したダミーユーザーも2名作成しています。また、そのユーザーのプロフィール、コメント、いいね、購入情報のシーディングファイルも設定していますが、機能の検証に邪魔な場合は「DatabaseSeeder.php」ファイル内の「ProfilesTableSeeder」「CommentsTableSeeder」「LikesTableSeeder」「PurchasesTableSeeder」のそれぞれのクラスをコメントアウトして下さい。またこのREADME.mdと同階層にダミーデータの簡単な相関図を配置しているので、よろしければご参照ください。*
+> *シーディングファイルについて：商品のダミーデータを作成するにあたり、それらの商品を出品したダミーユーザーも2名作成しています。また、そのユーザーのプロフィール、コメント、いいね、購入情報のシーディングファイルも設定していますが、機能の検証に邪魔な場合は「DatabaseSeeder.php」ファイル内の「ProfilesTableSeeder」「CommentsTableSeeder」「LikesTableSeeder」「PurchasesTableSeeder」のそれぞれのクラスをコメントアウトして下さい。またこのREADME.mdと同階層にダミーデータの簡単な相関図を配置しているので、よろしければご参照ください。*
 
 
 ## phpunitを使用したテストについて
@@ -137,12 +137,12 @@ MAIL_FROM_NAME="${APP_NAME}"
 php artisan key:generate —-env=testing
 ```
 
-6. 最新の「.env.testing」ファイルの設定を有効にするためコマンドを実行。
+5. 最新の「.env.testing」ファイルの設定を有効にするためコマンドを実行。
 ``` bash
 php artisan config:clear
 ```
 
-7. テスト用のテーブルを作成。
+6. テスト用のテーブルを作成。
 ``` bash
 php artisan migrate —-env=testing
 ```
@@ -150,7 +150,7 @@ php artisan migrate —-env=testing
 ### テストファイルについて
 tests/Feature ディレクトリ以下に,
 テスト項目に合わせて 16 のテストファイルを作成しています。  
-それぞれのファイル内に、テスト内容をコメントアウトしていますのでご参照ください。
+それぞれのファイル内に、テスト内容をタイトルとしてコメントアウトしていますのでご参照ください。
 
 ## 使用技術(実行環境)
 

@@ -1,4 +1,4 @@
-# flea-market-app (coachtechフリマ)
+# mock (coachtechフリマ)
 
 ## 環境構築
 

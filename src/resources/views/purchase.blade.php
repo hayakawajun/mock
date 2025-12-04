@@ -156,5 +156,6 @@
     </div>
 
 </form>
+
 <script src="{{ asset('js/payment.js') }}"></script>
 @endsection('content')

@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/login.css')}}">
-@endsection
-
 @section('content')
 <div class="content">
 
@@ -16,7 +12,7 @@
             @error('email')
                 <p class="error-message">{{ $message }}</p>
             @enderror
-            <input class="input-window" type="text" name="email" id="email">
+            <input class="input-window" type="text" name="email" id="email" value="{{ old('email') }}">
         </div>
 
         <div class="form__group">

@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Profile;
-use App\Models\Item;   //Itemモデルのインポート、いらないかも？
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
-
 
 class ProfileController extends Controller
 {
@@ -27,7 +23,8 @@ class ProfileController extends Controller
     }
 
 
-    public function show(){
+    public function show()
+    {
         $profile = Auth::user()->profile;
 
         return view('profile',compact('profile'));

@@ -4,8 +4,6 @@ namespace App\Http\Requests;
 
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
-
 
 class LoginRequest extends FortifyLoginRequest
 {

@@ -70,6 +70,12 @@
     width: 140px;
 }
 
+.category-names {
+    margin-right: 0px;
+    margin-left: auto;
+    width: 70%;
+}
+
 .category-name {
     display: inline-block;
     background-color: #d9d9d9;
@@ -79,10 +85,16 @@
     margin-bottom: 15px;
 }
 
-.status {
+.condition {
     margin-top: -20px;
     display: flex;
     align-items: baseline;
+}
+
+.status {
+    margin-right: 0px;
+    margin-left: auto;
+    width: 70%;
 }
 
 .item-status {

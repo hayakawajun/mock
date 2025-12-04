@@ -19,12 +19,6 @@
             </div>
         </header>
 
-        @error('email')
-        <span class="invalid-feedback">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-
         <div class="content">
             <p class="information">登録していただいたメールアドレスに認証メールを送付しました。</br>
             メール認証を完了してください。</p>

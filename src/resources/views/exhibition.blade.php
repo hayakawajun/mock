@@ -118,7 +118,9 @@
         <button class="submit-btn">出品する</button>
 
     </form>
+
 </div>
+
 <script src="{{ asset('js/upload_item.js') }}"></script>
 <script src="{{ asset('js/price.js') }}"></script>
 @endsection('content')

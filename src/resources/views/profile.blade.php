@@ -25,11 +25,11 @@
                     <img class="preview-image" id="preview-image" src="{{ asset('image/default.png') }}" alt="デフォルトのプロフィール画像">
                 </div>
             @endisset
-                <div class="upload__field">
-                    <label class="upload__item-image--btn" for="file-upload">画像を選択する</label>
-                    <input class="upload__item-image--input" type="file" name="image" id="file-upload" accept="image/*">
-                    <p class="file-name" id="file-name__display"></p>
-                </div>
+            <div class="upload__field">
+                <label class="upload__item-image--btn" for="file-upload">画像を選択する</label>
+                <input class="upload__item-image--input" type="file" name="image" id="file-upload" accept="image/*">
+                <p class="file-name" id="file-name__display"></p>
+            </div>
         </div>
 
         <div class="form__group">
@@ -76,5 +76,6 @@
     </form>
 
 </div>
+
 <script src="{{ asset('js/upload_profile.js') }}"></script>
 @endsection('content')

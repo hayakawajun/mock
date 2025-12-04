@@ -17,6 +17,6 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);   //  ユーザーにより複数のコメントが投稿される。usersの従リレーション。
+        return $this->belongsTo(User::class);
     }
 }

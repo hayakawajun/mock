@@ -74,19 +74,21 @@
                 </div>
             </div>
 
-            <div class="status">
+            <div class="condition">
                 <div class="information-subtitle">
                     <h4>商品の状態</h4>
                 </div>
-                @if($item->status == 1)
-                    <span class="item-status">良好</span>
-                @elseif($item->status == 2)
-                    <span class="item-status">目立った傷や汚れなし</span>
-                @elseif($item->status == 3)
-                    <span class="item-status">やや傷や汚れあり</span>
-                @elseif($item->status == 4)
-                    <span class="item-status">状態が悪い</span>
-                @endif
+                <div class="status">
+                    @if($item->status == 1)
+                        <span class="item-status">良好</span>
+                    @elseif($item->status == 2)
+                        <span class="item-status">目立った傷や汚れなし</span>
+                    @elseif($item->status == 3)
+                        <span class="item-status">やや傷や汚れあり</span>
+                    @elseif($item->status == 4)
+                        <span class="item-status">状態が悪い</span>
+                    @endif
+                </div>
             </div>
         </div>
 

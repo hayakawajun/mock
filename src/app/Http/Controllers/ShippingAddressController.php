@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ShippingAddress;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddressRequest;
-
-
 
 class ShippingAddressController extends Controller
 {

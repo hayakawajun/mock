@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Models\User;
 use App\Models\Purchase;
 use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +10,6 @@ use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\DB;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-
 
 class PurchaseController extends Controller
 {

@@ -7,7 +7,6 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Item;
-use App\Models\Category;
 use App\Models\Purchase;
 
 class MypageTest extends TestCase

@@ -19,28 +19,28 @@ class Item extends Model
         'image'
     ];
 
-    public function categories()    //  複数カテゴリーを保存するためのリレーション。多対多
+    public function categories()
     {
         return $this->belongsToMany(Category::class,'item_category','item_id','category_id')
                     ->withTimestamps();
     }
 
-    public function likers()    //  いいねしているユーザーID取得用のリレーション。多対多
+    public function likers()
     {
         return $this->belongsToMany(User::class,'likes','item_id','user_id');
     }
 
-        public function purchasers()    //  //  商品を購入したユーザーの情報取得用のリレーション。多対多
+        public function purchasers()
     {
         return $this->belongsToMany(User::class,'purchases','item_id','user_id');
     }
 
-    public function purchase()  //  1つの商品は1つの購入状況を持つ。1対1
+    public function purchase()
     {
         return $this->hasOne(Purchase::class);
     }
 
-    public function comments()  //  1つの商品は複数のコメントを持つ。1対多
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }

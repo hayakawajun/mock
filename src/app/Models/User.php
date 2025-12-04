@@ -42,34 +42,33 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile()   //  1人のユーザーは1つのプロフィール情報を持つ。1対1
+    public function profile()
     {
         return $this->hasOne(Profile::class);
     }
 
-    public function likedItems()    //  いいねしている商品ID取得用のリレーション。多対多
+    public function likedItems()
     {
         return $this->belongsToMany(Item::class,'likes','user_id','item_id');
     }
 
-    public function exhibitedItems()    //  1人のユーザーは複数の商品を出品する。1対多
+    public function exhibitedItems()
     {
         return $this->hasMany(Item::class);
     }
 
-    public function purchasedItems()    //  ユーザーが購入した商品情報取得用のリレーション。多対多
+    public function purchasedItems()
     {
         return $this->belongsToMany(Item::class,'purchases','user_id','item_id');
     }
 
-    public function comments()  //  1人のユーザーは複数のコメントを投稿する。1対多
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function shippingAddresses()  //  1人のユーザーは複数の配送先住所を持つ。1対多
+    public function shippingAddresses()
     {
         return $this->hasMany(ShippingAddress::class);
     }
-
 }

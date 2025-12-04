@@ -8,7 +8,6 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 use App\Http\Responses\CustomRegisterResponse;
@@ -20,7 +19,6 @@ use Laravel\Fortify\Contracts\VerifyEmailResponse as VerifyEmailResponseContract
 use App\Http\Responses\CustomVerifyEmailResponse;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Auth\Events\Lockout;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -58,12 +56,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
 
-            if ($user && Hash::check($request->password, $user->password)) {
+            if ($user && Hash::check($request->password, $user->password)){
 
                 if (!$user->hasVerifiedEmail()) {
                     return null;
                 }
-
                 return $user;
             }
         });

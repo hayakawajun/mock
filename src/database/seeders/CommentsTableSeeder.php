@@ -18,22 +18,22 @@ class CommentsTableSeeder extends Seeder
             [
                 'user_id' => 1,
                 'item_id' => 6,
-                'text' => '前から欲しかったやつ！！'
+                'text' => 'カラオケで使うやつ！！'
             ],
             [
                 'user_id' => 1,
                 'item_id' => 7,
-                'text' => '青だったら買ったんだけどな。'
+                'text' => '生前母が愛用していました'
             ],
             [
                 'user_id' => 2,
                 'item_id' => 1,
-                'text' => 'このブランド大好き！'
+                'text' => '大好き！私の時計このブランドばかりよ'
             ],
             [
                 'user_id' => 2,
                 'item_id' => 2,
-                'text' => '色違い持ってる。おすすめよ。'
+                'text' => 'ハウンドドッグ！(HDD)'
             ]
         ];
 

@@ -9,7 +9,7 @@
 git clone git@github.com:hayakawajun/mock.git
 ```
 2. DockerDesktopアプリを立ち上げる。
-3. Dockerを起動。
+3. クローンした「mock」ディレクトリ内に移動し、Dockerを起動。
 ``` bash
 docker-compose up -d --build
 ```

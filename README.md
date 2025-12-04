@@ -84,7 +84,7 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
-> *シーディングファイルについて：商品のダミーデータを作成するにあたり、それらの商品を出品したダミーユーザーも2名作成しています。また、そのユーザーのプロフィール、コメント、いいね、購入情報のシーディングファイルも設定していますが、機能の検証に邪魔な場合は「DatabaseSeeder.php」ファイル内の「ProfilesTableSeeder」「CommentsTableSeeder」「LikesTableSeeder」「PurchasesTableSeeder」のそれぞれのクラスをコメントアウトして下さい。またこのREADME.mdと同階層にダミーデータの簡単な相関図を配置しているので、よろしければご参照ください。*
+> *シーディングファイルについて：商品のダミーデータを作成するにあたり、それらの商品を出品したダミーユーザーも2名作成しています。また、そのユーザーのプロフィール、コメント、いいね、購入情報のシーディングファイルも設定していますが、機能の検証に邪魔な場合は「DatabaseSeeder.php」ファイル内の「CommentsTableSeeder」「LikesTableSeeder」「PurchasesTableSeeder」のそれぞれのクラスをコメントアウトして下さい。 （「ProfilesTableSeeder」をコメントアウトすることで、ダミーユーザーがプロフィールを未設定のままプロフィール画面／購入画面まで進んだ場合のブラウザ表示確認ができます。） またこのREADME.mdと同階層にダミーデータの簡単な相関図を配置しているので、よろしければご参照ください。*
 
 
 ## phpunitを使用したテストについて

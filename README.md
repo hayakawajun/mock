@@ -128,7 +128,7 @@ docker-compose exec php bash
 
 4. テスト用のアプリケーションキーの作成。
 ``` bash
-php artisan key:generate —-env=testing
+php artisan key:generate --env=testing
 ```
 
 5. 最新の「.env.testing」ファイルの設定を有効にするためコマンドを実行。
@@ -138,7 +138,8 @@ php artisan config:clear
 
 6. テスト用のテーブルを作成。
 ``` bash
-php artisan migrate —-env=testing
+php artisan migrate --env=testing
+
 ```
 
 ### テストファイルについて

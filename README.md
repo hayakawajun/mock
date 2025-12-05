@@ -25,10 +25,7 @@ docker-compose exec php bash
 ``` bash
 composer install
 ```
-3. 「.env.example」ファイルをコピーして「.env」ファイルを作成。
-``` bash
-cp .env.example .env
-```
+3. 一度コンテナを出て、「.env.example」ファイルをコピーして「.env」ファイルを作成。
 
 4. 作成した「.env」ファイルに以下の環境変数を設定。
 
@@ -60,7 +57,7 @@ STRIPE_SECRET="あなたのテストシークレットキーをここに記述"
 ```
 > *Stripeキーについて：キーの値はStripeのテスト用サンドボックス画面に入り、[開発者]アイコンから[APIキー]押下で遷移後、テスト用のAPIキーをそれぞれコピーして上記項目に貼り付けてください。*
 
-5. アプリケーションキーの作成。
+5. 再びPHPコンテナ内に移動し、アプリケーションキーの作成。
 ``` bash
 php artisan key:generate
 ```
@@ -91,17 +88,9 @@ php artisan db:seed
 
 ### テスト環境構築
 
-1. PHPコンテナ内に移動。
-``` bash
-docker-compose exec php bash
-```
+1. 「.env.example」ファイルをコピーして「.env.testing」ファイルを作成。
 
-2. 「.env.example」ファイルをコピーして「.env.testing」ファイルを作成。
-``` bash
-cp .env.example .env.testing
-```
-
-3. 作成した「.env.testing」ファイルに以下の環境変数を設定。
+2. 作成した「.env.testing」ファイルに以下の環境変数を設定。
 
 - アプリケーションに関する設定
 ``` text
@@ -130,6 +119,11 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=test@example.com
 MAIL_FROM_NAME="${APP_NAME}"
+```
+
+3. PHPコンテナ内に移動。
+``` bash
+docker-compose exec php bash
 ```
 
 4. テスト用のアプリケーションキーの作成。
